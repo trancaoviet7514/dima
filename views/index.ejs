@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+        <%var products %>
 
 <head>
     <meta charset="UTF-8">
@@ -122,106 +123,37 @@
                 <h2>On Sale</h2>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="image/4.jpg" alt="">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Wishlist">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                        <h3>Đắc Nhân Tâm</h3>
-                        <h5>150.000 ₫</h5>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="image/4.jpg" alt="">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Wishlist">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                        <h3>Đắc Nhân Tâm</h3>
-                        <h5>150.000 ₫</h5>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="image/4.jpg" alt="">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Wishlist">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                        <h3>Đắc Nhân Tâm</h3>
-                        <h5>150.000 ₫</h5>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="image/4.jpg" alt="">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Wishlist">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                        <h3>Đắc Nhân Tâm</h3>
-                        <h5>150.000 ₫</h5>
-                    </div>
-                </div>
+              <% if(products != null) { %>
+                <% products.forEach(function(product) { %>
+                  <div class="col-md-3">
+                      <div class="product-top">
+                            <%var str = `./image/${product.image}` %>
+                          <img src= "<%= str%>" alt="">
+                          <div class="overlay-right">
+                              <button type="button" class="btn btn-secondary" title="Quick Shop">
+                                  <i class="fa fa-eye" aria-hidden="true"></i>
+                              </button>
+                              <button type="button" class="btn btn-secondary" title="Add to Wishlist">
+                                  <i class="fa fa-heart" aria-hidden="true"></i>
+                              </button>
+                              <button type="button" class="btn btn-secondary" title="Add to Cart">
+                                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                              </button>
+                          </div>
+                      </div>
+                      <div class="product-bottom text-center">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                          <h3><%= product.name%></h3>
+                          <h5><%= product.price%></h5>
+                      </div>
+                  </div>
+                  <% }); %>
+              <%}%>
+              
             </div>
 
         </div>
