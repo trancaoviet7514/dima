@@ -7,10 +7,10 @@ var mysql = require('mysql');
 var sharp = require('sharp')
 
 var conn = mysql.createConnection({
-    database: 'mall',
+    database: 'test',
     host: "localhost",
     user: "root",
-    password: "221447514aA#"
+    password: "ty0918936373"
   });
    
   conn.connect(function(err) {
@@ -30,18 +30,26 @@ router.get('/upload', function (req, res) {
     res.render('upload')
 })
 
+router.get('/login', function(req, res){
+    res.render('login')
+})
+
+router.get('/signup', function(req, res){
+    res.render('signup')
+})
+
 router.post('/upload', upload.single('photo'), (req, res) => {
-    var insertStr = `INSERT into book(name, price, image) 
+    var insertStr = `INSERT into book(name, price, image, phone) 
                     values(\'${req.body.name}\',
                     N\'${req.body.price}\',
-                    \'${req.file.filename}\')`
+                    \'${req.file.filename}\',
+                    \'${req.body.phone}\')`
     conn.query(insertStr, function(err, results) {
         if (err) throw err;
         console.log("Insert a record!");
-    
     });
     if(req.file) {        
-        res.render('upload')
+        res.redirect('/')
     }
     else throw 'error';
 });
