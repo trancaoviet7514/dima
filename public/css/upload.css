@@ -1,0 +1,213 @@
+/* body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    /* background-color: #639fdb; 
+    background: url(../image/background1.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
+.login-box{
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    right: -165px;
+    transform: translate(-50%, -50%);
+    border: 1px solid #000000;
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    padding: 10px 10px 10px 10px;
+}
+.login-box h1{
+    font-size: 30px;
+    border-bottom: 4px solid #165fa8;
+    margin-bottom: 20px;
+    padding: 13px 0;
+    margin-top: 0;
+}
+.textbox{
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid #165fa8;
+}
+
+.textbox h3{
+    width: 180px;
+    font-size: 20px;
+}
+
+.textbox i{
+    width: 26px;
+    float: left;
+    text-align: center;
+}
+.textbox input{
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    width: 210px;
+    float: left;
+    margin: 0 10px;
+}
+.btn
+{
+    width: 100%;
+    background: none;
+    border: 2px solid #99ccff;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10;
+    width: 30;
+    border: none;
+}
+.btn:hover{
+    color: black;
+}
+p{
+    font-size: 10px;
+    text-align: center;
+}
+p:hover{
+    color: #ffffff;
+}
+a{
+    text-decoration: none;
+    color: gray;
+}
+.textbox input{
+    width: 350px;
+}
+.title-text{
+    color: red;
+} */
+
+body,
+        html {
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bg-img {
+            /* The image used */
+            background-image: url(../image/background4.jpg);
+
+            min-height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Add styles to the form container */
+        .container {
+            position: absolute;
+            right: 0;
+
+            width: 300px;
+            padding: 16px;
+            background-color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 5px;
+        }
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=password],
+        input[type=file],
+        input[type=number] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Set a style for the submit button */
+        .btn {
+            background-color: #4d94ff;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            opacity: 1;
+        }
+
+        p {
+            color: #71aaff;
+            font-size: 15px;
+            text-align: center;
+            margin-top: 17px;
+        }
+
+        p:hover {
+            color: #4d94ff;
+        }
+
+        a {
+
+            text-decoration: none;
+            color: gray;
+        }
+
+        a {
+            text-decoration: none;
+            color: gray;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+
+        .chooseFile{
+            background-color: #f1f1f1;
+            color: gray;
+            font-size: 13px;
+            font-weight: normal;
+            border: 2px dashed #ccc;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border-radius:5px;
+        }
+
+        .rememberMe{
+            padding: 15px;
+            margin: 5px 0 22px 0;
+        }
