@@ -38,6 +38,10 @@ router.get('/signup', function(req, res){
     res.render('signup')
 })
 
+router.get('/personalPage', function(req, res){
+    res.render('personalPage');
+})
+
 router.post('/upload', upload.single('photo'), (req, res) => {
     var insertStr = `INSERT into book(name, price, image, phone) 
                     values(\'${req.body.name}\',
