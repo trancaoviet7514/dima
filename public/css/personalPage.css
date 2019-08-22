@@ -97,6 +97,8 @@ body{
     display: block;
     float: center;
     font-size: 10px;
+    width: 144px;
+    font-size: 13px;
 }
 
 .dropdown-content a:hover {
