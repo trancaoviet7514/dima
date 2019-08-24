@@ -22,7 +22,6 @@ body{
     top: 0;
     position: sticky;
     background: #ffffff;
-    margin-bottom: 10px;
     border-bottom: 3px solid #4d94ff;
     z-index: 2;
 }
@@ -51,11 +50,18 @@ body{
     border-bottom-right-radius: 20px !important;
     cursor: pointer;
 }
+
 .search-box{
     display: inline-flex;
-    width: 60%;
     height: 50px;
 }
+
+.form-search-box{
+    display: inline-flex;
+    width: 50%;
+    height: 50px;
+}
+
 .fa-search{
     color: #ffffff;
 }
@@ -86,7 +92,7 @@ body{
 }
 @media only screen and (max-width: 1115px){
     .top-nav-bar{
-        height: 118px;
+        height: 105px;
         border-bottom: 0;
     }
     .search-box{
@@ -154,6 +160,15 @@ body{
     float: right;
 }
 
+.childMenu{
+    margin-top: -15px;
+}
+@media only screen and (max-width: 980px){
+    .childMenu{
+        margin-top: 45px;
+}
+}
+
 @media only screen and (max-width: 980px){
     .side-menu{
         width: 25%;
@@ -180,11 +195,58 @@ body{
     } */
 }
 
+/* filter-bar */
+.filter-bar{
+    border-top: 5px;
+}
+
+.filter-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.filter-bar ul li {
+    float: left;
+    width: 20%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.filter-bar ul li:nth-child(2){
+    border-left: 3px solid #4d94ff;
+    border-right: 3px solid #4d94ff;
+}
+
+.filter-bar ul li:nth-child(4){
+    border-left: 3px solid #4d94ff;
+    border-right: 3px solid #4d94ff;
+}
+
+.filter-bar ul li a {
+    display: block;
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    font-style: italic;
+    color: #4d94ff;
+}
+
+.filter-bar ul li:hover{
+    background-color: #c5c5c5;
+}
+
 /* Slider */
+.header{
+    margin-bottom: 5px;
+}
+
 .slider{
-    width: 85%;
-    margin-left: 15%;
-    padding: 0 10px;
+
 }
 .carousel{
     box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.5);
@@ -300,11 +362,6 @@ body{
     transition: 0.2s;
 }
 
-@media only screen and (max-width: 980px){
-
-}
-
-
 /* product-bottom */
 .product-bottom .fa{
     color: #4d94ff;
@@ -416,3 +473,90 @@ body{
     padding-bottom: 10px;
     min-height: 390px;
 } */
+
+/* search button */
+.searchButton{
+    height: 38px;
+    padding: 0;
+    margin-top: 9px;
+    background-color: #4d94ff;
+    width: 45px;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    border: 0px;
+}
+
+.fa-search{
+    font-size: 15px;
+    color: #ffffff;
+    margin: 5px;
+    margin-right: 8px;
+}
+
+/* search  */
+.bs-example{
+	font-family: sans-serif;
+	position: relative;
+	margin: 50px;
+}
+.typeahead, .tt-query, .tt-hint {
+    width: 250px;
+	margin-top: 9px;
+    margin-left: 30px;
+    border: 1px solid #4d94ff !important;
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    box-shadow: none !important;
+    height: 38px;
+    padding-left: 10px;
+    border: 0px;
+}
+.typeahead {
+	background-color: #FFFFFF;
+}
+
+.tt-dropdown-menu {
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 0px;
+	padding: 3px 0;
+    width: 206px;
+    margin-left: 30px;
+}
+.tt-suggestion {
+	font-size: 15px;
+	line-height: 20px;
+	padding: 3px 10px;
+}
+.tt-suggestion.tt-is-under-cursor {
+	background-color: rgb(188, 188, 189);
+	color: #FFFFFF;
+}
+.tt-suggestion p {
+	margin: 0;
+}
+
+
+@media only screen and (max-width: 337px){
+    .typeahead, .tt-query, .tt-hint {
+        width: 210px;
+        margin-top: 9px;
+        margin-left: 30px;
+        border: 1px solid #4d94ff !important;
+        border-top-left-radius: 20px !important;
+        border-bottom-left-radius: 20px !important;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        box-shadow: none !important;
+        height: 38px;
+        padding-left: 10px;
+        border: 0px;
+    }
+}
+
