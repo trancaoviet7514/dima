@@ -6,23 +6,47 @@ const upload = multer({dest: __dirname + '/public/image'});
 var mysql = require('mysql');
 var sharp = require('sharp')
 
-var conn = mysql.createConnection({
-    database: 'test',
-    host: "localhost",
-    user: "root",
-    password: "ty0918936373"
-  });
+// var conn = mysql.createConnection({
+//     database: 'test',
+//     host: "localhost",
+//     user: "root",
+//     password: "ty0918936373"
+//   });
    
-  conn.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-  });
+//   conn.connect(function(err) {
+//     if (err) throw err;
+//     console.log("Connected!");
+//   });
+
+  const { Pool, Client } = require('pg')
+const pool = new Pool({
+  user: 'postgres',
+  host: '127.0.0.1',
+  database: 'mall',
+  password: '221447514aA#',
+  port: 5432,
+})
+// pool.query('SELECT NOW()', (err, res) => {
+//   console.log(err, res)
+//   pool.end()
+// })
+const client = new Client({
+  user: 'postgres',
+  host: '127.0.0.1',
+  database: 'mall',
+  password: '221447514aA#',
+  port: 5432,
+})
+client.connect()
+client.query('SELECT * from book', (err, res) => {
+  console.log(err, res)
+})
 
 router.get('/', function (req, res) {
     var getAllBookStr = 'select * from book'
-    conn.query(getAllBookStr, function(err, results) {
+    client.query(getAllBookStr, function(err, results) {
         if (err) throw err;
-        res.render('index', {products: results})
+        res.render('index', {products: results.rows})
     });
 })
 
