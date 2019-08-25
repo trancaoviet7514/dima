@@ -23,6 +23,15 @@ router.get('/', function (req, res) {
 
 router.get('/upload', function (req, res) {
     res.render('upload')
+
+router.get("/login", function(req, res) {
+  res.render("login");
+});
+
+router.get("/signup", function(req, res) {
+  res.render("signup");
+});
+
 })
 
 router.get('/login', function(req, res){
@@ -39,19 +48,18 @@ router.get('/personalPage', function(req, res){
 
 router.post('/upload', upload.single('photo'), (req, res) => {
     var insertStr = `INSERT into book(name, price, image, phone) 
-                    values(\'${req.body.name}\',
-                    N\'${req.body.price}\',
-                    \'${req.file.filename}\',
-                    \'${req.body.phone}\')`
-    
-    client.query(insertStr, function(err, results) {      
-        if (err) throw err;
-        console.log("Insert a record!");
-    });
-    if(req.file) {        
-        res.redirect('/')
     }
-    else throw 'error';
+  );
 });
+// đang sửa
 
+//Tìm kiếm
+router.get("/find", function(req, res) {
+    var getAllBookStr = 'SELECT * from book where name like "%' + req.query.typeahead + '%"';
+    conn.query(getAllBookStr, function(err, results) {
+      if (err) throw err;
+      res.render("index", { products: results });
+    });
+  });
+  
 module.exports = router;

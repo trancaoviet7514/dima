@@ -15,23 +15,38 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="css/main.css">
 </head>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="typeahead.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input.typeahead').typeahead({
+            name: 'countries',
+            remote: 'http://localhost:3000/search?key=%QUERY',
+            limit: 10
+        });
+    });
+</script>
+
 <body>
     <div class="top-nav-bar">
-        <div class="search-box">
-            <i class="fa fa-bars" id="menu-btn" onclick="openmenu()" aria-hidden="true"></i>
-            <i class="fa fa-times" id="close-btn" onclick="closemenu()" aria-hidden="true"></i>
-            <a href=""><img src="image/icon2.png" alt="" class="logo"></a>
-            <input type="text" class="form-control">
-            <span class="input-group-text">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </span>
-        </div>
+        <a href=""><img src="image/icon2.png" alt="" class="logo"></a>
+        <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
+            <div class="search-box">
+                <!-- <i class="fa fa-bars" id="menu-btn" onclick="openmenu()" aria-hidden="true"></i>
+                <i class="fa fa-times" id="close-btn" onclick="closemenu()" aria-hidden="true"></i> -->
+                <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false"
+                    class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+
         <div class="menu-bar">
             <ul>
                 <!-- <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
@@ -43,36 +58,38 @@
         </div>
     </div>
 
-    <!-- <section class="header">
-                    <div class="side-menu" id="side-menu">
-                        <ul>
-                            <li>On Sale<i class="fa fa-angle-right" aria-hidden="true"></i>
-                                <ul>
+    <div class="filter-bar">
+        <ul>
+            <li><a href="">Mới</a></li>
+            <li><a href="">Sách</a></li>
+            <li><a href="">Đồ dùng</a></li>
+            <li><a href="">Quần áo</a></li>
+            <li><a href="">Khác</a></li>
+        </ul>
+    </div>
+
+    <section class="header">
+        <!-- <div class="side-menu" id="side-menu">
+            <ul>
+                <li>Sản phẩm mới<i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <ul class="childMenu">
                                     <li>Sub Menu-1</li>
                                     <li>Sub Menu-1</li>
                                     <li>Sub Menu-1</li>
                                     <li>Sub Menu-1</li>
                                 </ul>
-                            </li>
-                            <li>Mobiles<i class="fa fa-angle-right" aria-hidden="true"></i>
-                                <ul>
-                                    <li>Sub Menu-2</li>
-                                    <li>Sub Menu-2</li>
-                                    <li>Sub Menu-2</li>
-                                    <li>Sub Menu-2</li>
-                                </ul>
-                            </li>
-                            <li>Computers<i class="fa fa-angle-right" aria-hidden="true"></i>
-                                <ul>
-                                    <li>Sub Menu-3</li>
-                                    <li>Sub Menu-3</li>
-                                    <li>Sub Menu-3</li>
-                                    <li>Sub Menu-3</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="slider">
+                </li>
+                <li>Sách cũ<i class="fa fa-angle-right" aria-hidden="true"></i>
+                </li>
+                <li>Quần áo<i class="fa fa-angle-right" aria-hidden="true"></i>
+                </li>
+                <li>Đồ gia dụng<i class="fa fa-angle-right" aria-hidden="true"></i>
+                </li>
+                <li>Khác ...<i class="fa fa-angle-right" aria-hidden="true"></i>
+                </li>
+            </ul>
+        </div> -->
+        <!-- <div class="slider">
                         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
@@ -99,8 +116,8 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-                    </div>
-                </section> -->
+                    </div> -->
+    </section>
 
     <!-- featured-categories -->
     <!-- <section class="featured-categories">
@@ -125,8 +142,14 @@
             <!-- <div class="title-box firsttitle">
                 <h2>Sách mới</h2>
             </div> -->
-            <div class="row">
+            <div class="row" id="listProduct">
                 <% if(products != null) { %>
+
+                <% if(products.length == 0) { %>
+                <h1 style="margin: 0 auto;">NOT FOUND</h1>
+                <p style="width: 100%; text-align: center; margin-bottom: 5px;">Không tìm thấy sản phẩm nào</p><br>
+                <%}%>
+
                 <% products.forEach(function(product) { %>
                 <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="box">
@@ -162,11 +185,11 @@
                 </div>
                 <% }); %>
                 <%}%>
-                        </div>
-                    </div>
-                </section>
-            
-                <!-- Website features
+            </div>
+        </div>
+    </section>
+
+    <!-- Website features
                 <section class="website-features">
                     <div class="container">
                         <div class="row">
@@ -196,8 +219,8 @@
                             </div>
                         </div>
                     </div>
-                </section> --> 
-          
+                </section> -->
+
     <!-- footer  -->
     <!-- <section class="footer">
         <div class="container text-center text-md-left">
@@ -296,4 +319,5 @@
 
     // window.onload = function () { createCallBack(); createCallBack2()}; // caller 7
 </script>
+
 </html>
