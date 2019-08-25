@@ -47,9 +47,19 @@ router.get('/personalPage', function(req, res){
 })
 
 router.post('/upload', upload.single('photo'), (req, res) => {
-    var insertStr = `INSERT into book(name, price, image, phone) 
-    }
-  );
+  var insertStr = `INSERT into book(name, price, image, phone) 
+                  values(\'${req.body.name}\',
+                  N\'${req.body.price}\',
+                  \'${req.file.filename}\',
+                  \'${req.body.phone}\')`
+  client.query(insertStr, function(err, results) {
+      if (err) throw err;
+      console.log("Insert a record!");
+  });
+  if(req.file) {        
+      res.redirect('/')
+  }
+  else throw 'error';
 });
 // đang sửa
 
