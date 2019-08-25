@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const upload = multer({dest: __dirname + '/public/image'});
+const mime = require('mime')
 
 const {Client} = require('pg')
 const client = new Client({
@@ -12,6 +13,20 @@ const client = new Client({
   port: 5432,
   ssl: true
 })
+
+const keyFilename="./dima-fc345-firebase-adminsdk-a1u59-35ff50d6c5.json"; //replace this with api key file
+const projectId = "dima-fc345" //replace with your project id
+const bucketName = `${projectId}.appspot.com`;
+
+const {Storage} = require('@google-cloud/storage')
+
+const gcs = new Storage({
+    projectId,
+    keyFilename
+});
+
+const bucket = gcs.bucket(bucketName);
+
 client.connect()
 router.get('/', function (req, res) {    
   var getAllBookStr = 'select * from book'
@@ -47,19 +62,36 @@ router.get('/personalPage', function(req, res){
 })
 
 router.post('/upload', upload.single('photo'), (req, res) => {
-  var insertStr = `INSERT into book(name, price, image, phone) 
+  
+  const filePath = `./public/image/${req.file.filename}`;
+  const uploadTo = `image/${req.file.filename}`;
+  const fileMime = mime.lookup(filePath);
+
+  bucket.upload(filePath,{
+      destination:uploadTo,
+      public:true,
+      metadata: {contentType: fileMime,cacheControl: "public, max-age=300"}
+  }, function(err, file) {
+      if(err)
+      {
+          console.log(err);
+          return;
+      }
+      console.log(createPublicFileURL(uploadTo));
+      var insertStr = `INSERT into book(name, price, image, phone) 
                   values(\'${req.body.name}\',
                   N\'${req.body.price}\',
-                  \'${req.file.filename}\',
+                  \'${createPublicFileURL(uploadTo)}\',
                   \'${req.body.phone}\')`
-  client.query(insertStr, function(err, results) {
-      if (err) throw err;
-      console.log("Insert a record!");
-  });
-  if(req.file) {        
-      res.redirect('/')
-  }
-  else throw 'error';
+      client.query(insertStr, function(err, results) {
+          if (err) throw err;
+          console.log("Insert a record!");
+      });
+      if(req.file) {        
+          res.redirect('/')
+      }
+      else throw 'error';
+      });
 });
 // đang sửa
 
@@ -71,5 +103,10 @@ router.get("/find", function(req, res) {
       res.render("index", { products: results });
     });
   });
+
+  function createPublicFileURL(storageName) {
+    return `http://storage.googleapis.com/${bucketName}/${encodeURIComponent(storageName)}`;
+
+}
   
 module.exports = router;
