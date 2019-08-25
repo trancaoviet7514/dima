@@ -66,7 +66,7 @@ router.post('/upload', upload.single('photo'), (req, res) => {
 //Tìm kiếm
 router.get("/find", function(req, res) {
     var getAllBookStr = 'SELECT * from book where name like "%' + req.query.typeahead + '%"';
-    conn.query(getAllBookStr, function(err, results) {
+    client.query(getAllBookStr, function(err, results) {
       if (err) throw err;
       res.render("index", { products: results });
     });
