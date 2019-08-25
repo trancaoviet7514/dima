@@ -93,7 +93,6 @@ router.post('/upload', upload.single('photo'), (req, res) => {
       else throw 'error';
       });
 });
-// đang sửa
 
 //Tìm kiếm
 router.get("/find", function(req, res) {
