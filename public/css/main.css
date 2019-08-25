@@ -221,6 +221,7 @@ body{
     padding-bottom: 10px;
     padding-top: 10px;
     /* border-radius: 5px; */
+    margin-bottom: 10px;
 }
 
 .title-box{
@@ -300,11 +301,6 @@ body{
     transition: 0.2s;
 }
 
-@media only screen and (max-width: 980px){
-
-}
-
-
 /* product-bottom */
 .product-bottom .fa{
     color: #4d94ff;
@@ -342,25 +338,94 @@ body{
 }
 
 /* footer */
-.footer{
+/* .footer{
     width: 100%;
-    /* background-color: #deebf8; */
     text-align: center;
     padding: 5px 5px;
     font-size: 10px;
     font-weight: bold;
     margin-top: auto;
+    background: #ffffff;
+    padding-top: 10px;
+} */
+
+.footer{
+    background: #ffffff;
+    color: #000000;
+    margin-top: auto;
+    padding-top: 20px;
 }
 
-.copyright{
-    margin-bottom: -80px;
-    text-align: right;
-    font-size: 20px;
-    padding-bottom: 20px;
+.footer .links ul{
+    list-style-type: none;
+} 
+
+.footer .links ul li a{
+    color: #000000;
+    transition: color .2s;
 }
+
+.footer .links ul li a:hover{
+    text-decoration:none;
+    color:#4180CB;
+}
+
+.about-company i{
+    font-size: 25px;
+}
+
+.about-company a{
+    columns: #000000;
+    transition: color .2s;
+}
+
+.about-company a:hover{
+    color:#4180CB;
+}
+
+.location p{
+    margin-bottom: 5px;
+}
+.copyright p{
+    border-top: 1px solid #afafaf;
+    text-align: center;
+}
+
+.zalo-icon{
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+.fa-envelope-o{
+    font-size: 19px;
+    margin-right: 10px;
+}
+
+.fa-facebook-square{
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.fa-map-marker{
+    margin-right: 10px;
+    font-size: 23px;
+    color: red;
+}
+
 .fa-phone{
     font-size: 20px;
     margin: 5px;
+}
+
+@media only screen and (max-width: 1024px){
+    .links{
+        margin-top: 30px;
+    }
+
+    .location{
+        margin-top: 30px;
+    }
 }
 
 /* single-product */
