@@ -7,7 +7,7 @@ var mysql = require('mysql');
 var sharp = require('sharp')
 
 var conn = mysql.createConnection({
-    database: 'test',
+    database: 'mall',
     host: "localhost",
     user: "root",
     password: "ty0918936373"
