@@ -53,11 +53,10 @@ router.post("/upload", upload.single("photo"), (req, res) => {
   } else throw "error";
 });
 
-// đang sửa
 router.use(express.static(__dirname + "/JS"));
 router.get("/search", function(req, res) {
   conn.query(
-    'SELECT name from book where name like "%' + req.query.key + '%"',
+    `SELECT name from book where name like \'%${req.query.key}%\'`,
     function(err, rows, fields) {
       if (err) throw err;
       var data = [];
@@ -68,11 +67,10 @@ router.get("/search", function(req, res) {
     }
   );
 });
-// đang sửa
 
 //Tìm kiếm
 router.get("/find", function(req, res) {
-    var getAllBookStr = 'SELECT * from book where name like "%' + req.query.typeahead + '%"';
+    var getAllBookStr = `SELECT * from book where name like \'%${req.query.typeahead}%\'`;
     conn.query(getAllBookStr, function(err, results) {
       if (err) throw err;
       res.render("index", { products: results });

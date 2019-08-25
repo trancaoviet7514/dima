@@ -141,6 +141,17 @@
             document.getElementById('Label1').innerHTML = fileName;
         });
     });
-</script>
 
+    //Block copy paste
+    window.onload = function() {
+        const inputPrice = document.getElementById('priceId');
+            inputPrice.onpaste = function(e) {
+            e.preventDefault();
+        }
+        const inputPhone = document.getElementById('phonenumberId');
+            inputPhone.onpaste = function(e) {
+            e.preventDefault();
+        }
+    }
+</script>
 </html>
