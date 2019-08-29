@@ -9,6 +9,8 @@ const router = require('./router');
 app.use('/', router)
 app.use('/upload', router)
 app.use('/search', router)
+app.use('/edit', router)
+app.use('/delete', router)
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3000!')

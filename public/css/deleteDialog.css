@@ -37,10 +37,10 @@
   /* The Close Button (x) */
   .close {
     position: absolute;
-    right: 5px;
-    top: 5px;
+    right: 1px;
+    top: -2px;
     color: #000;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
   }
   
@@ -63,6 +63,10 @@
 
   /*fkgnfjkgnjfkngfe*/
     /* Full-width input fields */
+    .deleteDialog{
+      text-align: center;
+      width: fit-content;
+    }
     .deleteDialog
     input[type=text],
     input[type=password],
@@ -87,7 +91,7 @@
     /* Set a style for the submit button */
     .deleteDialog
     .btn {
-        background-color: #4d94ff;
+        background-color: red;
         color: white;
         padding: 5px;
         border: none;
@@ -96,8 +100,8 @@
         opacity: 0.9;
         font-size: 15px;
         font-weight: bold;
-        float: right;
-        margin: 0 auto;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .btn:hover {
