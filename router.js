@@ -10,14 +10,14 @@ const client = new Client({
   database: 'd65ufhdinrm8ir',
   password: '540742461b897e1d6e2d342f4cd4e6b055c7abf55db717767ba87aa89968ee2a',
   port: 5432,
-  ssl: true
-})
-client.connect()
-router.get('/', function (req, res) {    
-  var getAllBookStr = 'select * from book'
+  ssl: false
+});
+client.connect();
+router.get("/", function(req, res) {
+  var getAllBookStr = "select * from book";
   client.query(getAllBookStr, function(err, results) {
     if (err) throw err;
-    res.render("personalPage", { products: results.rows });
+    res.render("index", { products: results.rows });
   });
 });
 
@@ -40,7 +40,11 @@ router.get("/signup", function(req, res) {
   res.render("signup");
 });
 router.get("/personalPage", function(req, res) {
-  res.render("personalPage");
+  var getAllBookStr = "select * from book";
+  client.query(getAllBookStr, function(err, results) {
+    if (err) throw err;
+    res.render("personalPage", { products: results.rows });
+  });
 });
 router.get("/example", function(req, res) {
   res.render("example");
@@ -63,7 +67,7 @@ router.post("/upload", upload.single("photo"), (req, res) => {
 
 // edit
 router.post("/edit", upload.single("edit_photo"), (req, res) => {
-  var editQur = `UPDATE book SET name = \'${req.body.edit_name}\', price = \'${req.body.edit_price}\', phone = \'${req.body.edit_phone}\', image = \'${req.file.filename}\' WHERE id = \'${req.body.edit_id}\'`;
+  var editQur = `UPDATE book SET name = \'${req.body.edit_name}\', price = \'${req.body.edit_price}\', phone = \'${req.body.edit_phone}\' WHERE id = \'${req.body.edit_id}\'`;
   client.query(editQur, function(err, results) {
     if (err) throw err;
     console.log("Edited");
@@ -74,14 +78,23 @@ router.post("/edit", upload.single("edit_photo"), (req, res) => {
 // delete
 router.post("/delete", (req, res) => {
   // DELETE FROM table_name WHERE [condition];
-    var deleteQr = `DELETE FROM book WHERE id = \'${req.body.delete_id}\'`;
-    client.query(deleteQr, function(err, results) {
-      if (err) throw err;
-      console.log("Deleted row");
-      res.redirect("/personalPage");
-    });
+  var deleteQr = `DELETE FROM book WHERE id = \'${req.body.delete_id}\'`;
+  client.query(deleteQr, function(err, results) {
+    if (err) throw err;
+    console.log("Deleted row");
+    res.redirect("/personalPage");
+  });
 });
 
+// edit image
+router.post("/editImage", upload.single("edit_photo"), (req, res) => {
+  var editImg = `UPDATE book SET image = \'${req.file.filename}\' WHERE id = \'${req.body.image_id}\'`;
+  client.query(editImg, function(err, results) {
+    if (err) throw err;
+    console.log("Image Edited");
+    res.redirect("/personalPage");
+  });
+});
 // đang sửa
 
 //Tìm kiếm

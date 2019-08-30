@@ -105,10 +105,10 @@
                         <td><%= product.price%></td>
                         <td><%= product.phone%></td>
                         <%var str = `./image/${product.image}` %>
-                        <td><img class="image" src="<%= str%>" alt=""></td>
+                        <td><img class="image" src="<%= str%>" alt="" title="Sửa ảnh" onclick="document.getElementById('id04').style.display='block'"></td>
                         <td>
-                            <a class="editbtn manipulation" id="edit-icon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                            <a class="deletebtn manipulation"  id="delete-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <a class="editbtn manipulation" id="edit-icon"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Sửa thông tin"></i></a>
+                            <a class="deletebtn manipulation"  id="delete-icon"><i class="fa fa-trash-o" aria-hidden="true" title="Xóa sản phẩm"></i></a>
                         </td>
                     </tr>
                     <% }); %>
@@ -175,14 +175,32 @@
                 oninput="setCustomValidity('')" onkeyup="return displayWordCounter();"
                 onkeypress="return isNumberKey(event)">
 
-            <label for="edit_file_id" class="btn btn-primary btn-block chooseFile" id="Label2" style="overflow: hidden">Nhấp vào đây để chọn
+            <!-- <label for="edit_file_id" class="btn btn-primary btn-block chooseFile edit_file" name="edit_file" id="Label2" style="overflow: hidden">Nhấp vào đây để chọn
                 ảnh</label>
-            <input type="file" accept="image/*" name="edit_photo" required="" id="edit_file_id" style="display: none"
-                oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
+            <input type="file" accept="image/*" name="edit_photo" class="edit_photo" required="" id="edit_file_id" style="display: none"
+                oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')"> -->
 
             <input type="text" name="edit_id" class="edit_id" style="display: none">
 
             <button id="edit" type="submit" class="btn">Hoàn tất</button>
+        </form>
+    </div>
+
+    <!-- edit image dialog -->
+    <div id="id04" class="modal">
+        <form class="modal-content animate container" action="/editImage" method="post" enctype="multipart/form-data">
+            <h1>Sửa hình ảnh<span onclick="document.getElementById('id04').style.display='none'" class="close"
+                    title="Đóng cửa sổ">&times;</span></h1>
+
+            <label for="edit_file_id" class="btn btn-primary btn-block chooseFile edit_file" name="edit_file" id="Label3" style="overflow: hidden">Nhấp vào đây để chọn
+                ảnh</label>
+
+            <input type="file" accept="image/*" name="edit_photo" class="edit_photo" required="" id="edit_file_id" style="display: none"
+                oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
+
+            <input type="text" name="image_id" class="image_id" style="display: none">
+
+            <button id="edit_image" type="submit" class="btn">Hoàn tất</button>
         </form>
     </div>
 
@@ -294,9 +312,13 @@
             document.getElementById('Label1').style.borderColor = "#ccc";
             document.getElementById('Label1').style.backgroundColor = "#f1f1f1";
 
-            document.getElementById('Label2').innerHTML = fileName;
-            document.getElementById('Label2').style.borderColor = "#ccc";
-            document.getElementById('Label2').style.backgroundColor = "#f1f1f1";
+            // document.getElementById('Label2').innerHTML = fileName;
+            // document.getElementById('Label2').style.borderColor = "#ccc";
+            // document.getElementById('Label2').style.backgroundColor = "#f1f1f1";
+
+            document.getElementById('Label3').innerHTML = fileName;
+            document.getElementById('Label3').style.borderColor = "#ccc";
+            document.getElementById('Label3').style.backgroundColor = "#f1f1f1";
         });
     });
 
@@ -334,18 +356,18 @@
 
     //check empty edit
     $('#edit').bind("click", function () {
-        var imgVal = $('#edit_file_id').val();
+        // var imgVal = $('#edit_file_id').val();
         var nameVal = $('#edit_name_id').val();
         var priceVal = $('#edit_price_id').val();
         var phoneNumberVal = $('#edit_phone_id').val();
         var check = true;
 
-        if (imgVal == '') {
-            document.getElementById('Label2').style.borderColor = "#ff5c33";
-            document.getElementById('Label2').style.backgroundColor = "#ffd6cc";
-            document.getElementById('Label2').innerHTML = "Bạn chưa chọn ảnh";
-            check = false;
-        }
+        // if (imgVal == '') {
+        //     document.getElementById('Label2').style.borderColor = "#ff5c33";
+        //     document.getElementById('Label2').style.backgroundColor = "#ffd6cc";
+        //     document.getElementById('Label2').innerHTML = "Bạn chưa chọn ảnh";
+        //     check = false;
+        // }
 
         if (nameVal == '') {
             document.getElementById('edit_name_id').style.backgroundColor = "#ffd6cc";
@@ -386,10 +408,46 @@
             else if (i == 4) {
                 $('.edit_phone').val(item.innerHTML);
             }
+            else if (i == 5) {
+                var temp = getFilename(item.innerHTML);
+                $('.edit_file').text(temp);
+            }
         });
     });
 
-    // check don't change file image
+    // handling edit image
+    var currentImage;
+    jQuery('.image').on('click', function () {
+        var $row = jQuery(this).closest('tr');
+        var $columns = $row.find('td');
+
+        $columns.addClass('row-highlight');
+        var values = "";
+
+        jQuery.each($columns, function (i, item) {
+            if(i == 1){
+                $('.image_id').val(item.innerHTML);
+            }
+            if (i == 5) {
+                var temp = getFilename(item.innerHTML);
+                $('.edit_file').text(temp);
+                currentImage = temp;
+            }
+        });
+    });
+    jQuery('#edit_image').on('click', function () {
+        var temp = $("#Label3").text();
+        if(temp == currentImage){
+            document.getElementById('id04').style.display='none';
+            return false;
+        }
+    });
+    function getFilename(fileName){
+        var temp = fileName.split("/");
+        var result = temp[2].split("\"");
+        return result[0];
+    }
+
     // delete
     jQuery('.deletebtn').on('click', function () {
         document.getElementById('id03').style.display = 'block';
@@ -413,6 +471,7 @@
     var modal = document.getElementById('id01');
     var modal2 = document.getElementById('id02');
     var modal3 = document.getElementById('id03');
+    var modal4 = document.getElementById('id04');
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
@@ -423,6 +482,9 @@
         }
         if (event.target == modal3) {
             modal3.style.display = "none";
+        }
+        if (event.target == modal4) {
+            modal4.style.display = "none";
         }
     }
 
