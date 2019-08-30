@@ -22,7 +22,7 @@ body{
     top: 0;
     position: sticky;
     background: #ffffff;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
     border-bottom: 3px solid #4d94ff;
     z-index: 2;
 }
@@ -287,3 +287,125 @@ tr td i{
     padding: 10px;
     color: #4d94ff;
 }
+
+@import "compass/css3";
+
+.mySection {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+}
+table {
+    width: 100%; 
+  text-align: center;
+  min-width: 700px;
+}
+th, td {
+  padding: 10px 0;
+}
+td{
+    border: 1px solid #73abff;
+}
+th {
+  color: #002E4D;  
+}
+tr {
+  background: #F1F1F0;
+}
+.first{
+    background: #002E4D;
+    border-top: none;
+}
+.first th{
+    color: #f1f1f1;
+}
+.mySection div {
+  overflow-x:scroll;
+}
+
+@media only screen 
+and (max-width : 700px) {
+    .mySection {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+      }
+    .mySection:after {
+    content:'';
+  	position: absolute;
+		z-index: 10;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		width: 10%;
+		background: -webkit-linear-gradient(left, rgba(0,0,0,0) 10%, rgba(0,0,0,0.2));
+		background:    -moz-linear-gradient(left, rgba(0,0,0,0) 10%, rgba(0,0,0,0.2));
+		background:     -ms-linear-gradient(left, rgba(0,0,0,0) 10%, rgba(0,0,0,0.2));
+		background:      -o-linear-gradient(left, rgba(0,0,0,0) 10%, rgba(0,0,0,0.2));
+		background:     linear-gradient(to right, rgba(0,0,0,0) 10%, rgba(0,0,0,0.2));
+	}
+.mySection:before {
+		content:'';
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 10%;
+		background: -webkit-linear-gradient(right, rgba(0,0,0,0) 10%, rgba(0,0,0,0.2));
+		background:    -moz-linear-gradient(right, rgba(0,0,0,0) 10%, rgba(0,0,0,0.2));
+		background:     -ms-linear-gradient(right, rgba(0,0,0,0) 10%, rgba(0,0,0,0.2));
+		background:      -o-linear-gradient(right, rgba(0,0,0,0) 10%, rgba(0,0,0,0.2));
+		background:       linear-gradient(to left, rgba(0,0,0,0) 10%, rgba(0,0,0,0.2));
+	}
+}
+
+.manipulation{
+    cursor: pointer;
+    color: #0153ce;
+}
+.manipulation i{
+    color: #0153ce;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #002E4D; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #002E4D; 
+  }
+
+  .image{
+      width: 80px;
+      height: 80px;
+      transition: 0.5s;
+      object-fit: cover;
+  }
+
+  .image:hover{
+      opacity: 0.5;
+  }
+
+  .fade {
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    }
+ 
+    .fade:hover {
+       opacity: 0.5;
+       }

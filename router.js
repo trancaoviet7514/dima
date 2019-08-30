@@ -1,10 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 const multer = require('multer');
 const upload = multer({dest: __dirname + '/public/image'});
 const mime = require('mime')
 
-const {Client} = require('pg')
+const { Client } = require("pg");
 const client = new Client({
   user: 'yujeunvafgnwbm',
   host: 'ec2-23-21-186-85.compute-1.amazonaws.com',
@@ -31,34 +31,32 @@ client.connect()
 router.get('/', function (req, res) {    
   var getAllBookStr = 'select * from book'
   client.query(getAllBookStr, function(err, results) {
-      if (err) throw err;
-      res.render('index', {products: results.rows})
+    if (err) throw err;
+    res.render("index", { products: results.rows });
   });
-})
-
-router.get('/upload', function (req, res) {
-    res.render('upload')
-
-router.get("/login", function(req, res) {
-  res.render("login");
 });
 
-router.get("/signup", function(req, res) {
-  res.render("signup");
+router.get("/upload", function(req, res) {
+  res.render("upload");
+
+  router.get("/login", function(req, res) {
+    res.render("login");
+  });
+
+  router.get("/signup", function(req, res) {
+    res.render("signup");
+  });
 });
 
-})
+router.get("/personalPage", function(req, res) {
+  var getAllBookStr = "select * from book";
+  client.query(getAllBookStr, function(err, results) {
+    if (err) throw err;
+    res.render("personalPage", { products: results.rows });
+  });
+});
 
-router.get('/login', function(req, res){
-    res.render('login')
-})
 
-router.get('/signup', function(req, res){
-    res.render('signup')
-})
-
-router.get('/personalPage', function(req, res){
-    res.render('personalPage');
 })
 
 router.post('/upload', upload.single('photo'), (req, res) => {
@@ -92,6 +90,37 @@ router.post('/upload', upload.single('photo'), (req, res) => {
       }
       else throw 'error';
       });
+});
+
+// edit
+router.post("/edit", upload.single("edit_photo"), (req, res) => {
+  var editQur = `UPDATE book SET name = \'${req.body.edit_name}\', price = \'${req.body.edit_price}\', phone = \'${req.body.edit_phone}\' WHERE id = \'${req.body.edit_id}\'`;
+  client.query(editQur, function(err, results) {
+    if (err) throw err;
+    console.log("Edited");
+    res.redirect("/personalPage");
+  });
+});
+
+// delete
+router.post("/delete", (req, res) => {
+  // DELETE FROM table_name WHERE [condition];
+  var deleteQr = `DELETE FROM book WHERE id = \'${req.body.delete_id}\'`;
+  client.query(deleteQr, function(err, results) {
+    if (err) throw err;
+    console.log("Deleted row");
+    res.redirect("/personalPage");
+  });
+});
+
+// edit image
+router.post("/editImage", upload.single("edit_photo"), (req, res) => {
+  var editImg = `UPDATE book SET image = \'${req.file.filename}\' WHERE id = \'${req.body.image_id}\'`;
+  client.query(editImg, function(err, results) {
+    if (err) throw err;
+    console.log("Image Edited");
+    res.redirect("/personalPage");
+  });
 });
 
 //Tìm kiếm

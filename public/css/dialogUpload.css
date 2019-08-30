@@ -187,3 +187,6 @@ input[type=text], input[type=password] {
         margin: 5px 0 22px 0;
     }
     
+    .tensanpham{
+      font-weight: bold;
+    }
