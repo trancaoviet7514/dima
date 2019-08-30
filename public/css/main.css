@@ -47,8 +47,8 @@ body{
     margin: 8.5px 10px 3px 0 !important;
     border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;
-    border-top-right-radius: 20px !important;
-    border-bottom-right-radius: 20px !important;
+    border-top-right-radius: 3px !important;
+    border-bottom-right-radius: 3px !important;
     cursor: pointer;
 }
 
@@ -247,6 +247,28 @@ body{
     background-color: #c5c5c5;
 }
 
+@media only screen and (max-width: 980px){
+    .slider{
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 510px){
+    .filter-bar ul li {
+        float: left;
+        width: 20%;
+    }
+
+    .filter-bar ul li a {
+        line-height: 40px;
+        font-size: 10px;
+        text-align: center;
+        padding: 0;
+    }
+}
+
+
 /* Slider */
 .header{
     margin-bottom: 5px;
@@ -260,12 +282,6 @@ body{
 }
 .carousel-indicators{
     z-index: 1 !important;
-}
-@media only screen and (max-width: 980px){
-    .slider{
-        width: 100%;
-        margin-left: 0;
-    }
 }
 
 /* featured-categories */
@@ -560,8 +576,8 @@ body{
     width: 45px;
     border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;
-    border-top-right-radius: 20px !important;
-    border-bottom-right-radius: 20px !important;
+    border-top-right-radius: 3px !important;
+    border-bottom-right-radius: 3px !important;
     border: 0px;
 }
 
@@ -583,8 +599,8 @@ body{
 	margin-top: 9px;
     margin-left: 30px;
     border: 1px solid #4d94ff !important;
-    border-top-left-radius: 20px !important;
-    border-bottom-left-radius: 20px !important;
+    border-top-left-radius: 3px !important;
+    border-bottom-left-radius: 3px !important;
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
     box-shadow: none !important;
@@ -646,3 +662,20 @@ body{
     }
 }
 
+/* place holder */
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #CFCFCF;
+    font-size: 13px;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: #CFCFCF;
+    font-size: 13px;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: #CFCFCF;
+    font-size: 13px;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: #CFCFCF;
+    font-size: 13px;
+  }
