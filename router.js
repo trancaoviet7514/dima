@@ -54,7 +54,7 @@ router.get("/personalPage", function(req, res) {
     if (err) throw err;
     res.render("personalPage", { products: results.rows });
   });
-});
+})
 
 router.post('/upload', upload.single('photo'), (req, res) => {
   
