@@ -56,9 +56,6 @@ router.get("/personalPage", function(req, res) {
   });
 });
 
-
-})
-
 router.post('/upload', upload.single('photo'), (req, res) => {
   
   const filePath = `./public/image/${req.file.filename}`;
