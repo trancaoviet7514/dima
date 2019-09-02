@@ -2,47 +2,49 @@
 <html lang="en">
 
 <%var products %>
-<% var error; %>
+    <% var error; %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Người dùng</title>
+            <link rel="shortcut icon" href="image/logo05.png">
+            <link rel="apple-touch-icon" href="image/logo05.png">
+            <link rel="icon" href="image/logo05.png">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+            <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+            <link rel="stylesheet" href="css/personalPage.css">
+            <link rel="stylesheet" href="css/dialogUpload.css">
+            <link rel="stylesheet" href="css/editDialog.css">
+            <link rel="stylesheet" href="css/deleteDialog.css">
+        </head>
 
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="css/personalPage.css">
-    <link rel="stylesheet" href="css/dialogUpload.css">
-    <link rel="stylesheet" href="css/editDialog.css">
-    <link rel="stylesheet" href="css/deleteDialog.css">
-</head>
-
-<body>
-    <div class="top-nav-bar">
-        <div class="search-box">
-            <a href="/"><img src="image/icon2.png" alt="" class="logo"></a>
-            <input type="text" class="form-control">
-            <span class="input-group-text">
+        <body>
+            <div class="top-nav-bar">
+                <div class="search-box">
+                    <a href="/"><img src="image/logo05.png" alt="" class="logo"></a>
+                    <input type="text" class="form-control">
+                    <span class="input-group-text">
                 <i class="fa fa-search" aria-hidden="true"></i>
             </span>
-        </div>
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn"><span class="dropbtn-content">Lâm Nhật Ty</span><i
+                </div>
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn"><span class="dropbtn-content">Lâm Nhật Ty</span><i
                     class="fa fa-caret-down" aria-hidden="true"></i></button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="#">Đăng xuất</a>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="#">Đăng xuất</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <!-- <table class="center">
+            <!-- <table class="center">
         <thead class="thead-dark">
             <tr>
                 <th class="first" scope="col">Stt</th>
@@ -81,420 +83,409 @@
             </tr>
         </tbody>
     </table> -->
-    <section class="mySection">
-        <div>
-            <table>
-                <thead>
-                    <tr class="first">
-                        <th>stt</th>
-                        <th style="display: none">#</th>
-                        <th>Tên</th>
-                        <th>Giá</th>
-                        <th>Số điện thoại</th>
-                        <th>Ảnh</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if(products != null) { %>
-                    <% products.forEach(function(product) { %>
-                    <tr>
-                        <td class="firstColumn" id="id">erere</td>
-                        <td style="display: none"><%= product.id%></td>
-                        <td><%= product.name%></td>
-                        <td><%= product.price%></td>
-                        <td><%= product.phone%></td>
-                        <%var str = `./image/${product.image}` %>
-                        <td><img class="image" src="<%= str%>" alt="" title="Sửa ảnh" onclick="document.getElementById('id04').style.display='block'"></td>
-                        <td>
-                            <a class="editbtn manipulation" id="edit-icon"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Sửa thông tin"></i></a>
-                            <a class="deletebtn manipulation"  id="delete-icon"><i class="fa fa-trash-o" aria-hidden="true" title="Xóa sản phẩm"></i></a>
-                        </td>
-                    </tr>
-                    <% }); %>
-                    <%}%>
-                    <tr>
-                        <td></td>
-                        <td style="display: none"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="add manipulation" onclick="document.getElementById('id01').style.display='block'">Thêm SP</td>
-                    </tr>
-            </tbody>
-        </table>
-        </div>
-        </section>
-    </div>
-    <!-- upload dialog  -->
-    <div id="id01" class="modal">
-        <form class="modal-content animate container" action="/upload" method="post" enctype="multipart/form-data">
-            <h1>Đăng sản phẩm<span onclick="document.getElementById('id01').style.display='none'" class="close"
-                    title="Đóng cửa sổ">&times;</span></h1>
+            <section class="mySection">
+                <div>
+                    <table>
+                        <thead>
+                            <tr class="first">
+                                <th>stt</th>
+                                <th style="display: none">#</th>
+                                <th>Tên</th>
+                                <th>Giá</th>
+                                <th>Số điện thoại</th>
+                                <th>Ảnh</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(products != null) { %>
+                                <% products.forEach(function(product) { %>
+                                    <tr>
+                                        <td class="firstColumn" id="id">erere</td>
+                                        <td style="display: none">
+                                            <%= product.id%>
+                                        </td>
+                                        <td>
+                                            <%= product.name%>
+                                        </td>
+                                        <td>
+                                            <%= product.price%>
+                                        </td>
+                                        <td>
+                                            <%= product.phone%>
+                                        </td>
+                                        <%var str = `./image/${product.image}` %>
+                                            <td><img class="image" src="<%= str%>" alt="" title="Sửa ảnh" onclick="document.getElementById('id04').style.display='block'"></td>
+                                            <td>
+                                                <a class="editbtn manipulation" id="edit-icon"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Sửa thông tin"></i></a>
+                                                <a class="deletebtn manipulation" id="delete-icon"><i class="fa fa-trash-o" aria-hidden="true" title="Xóa sản phẩm"></i></a>
+                                            </td>
+                                    </tr>
+                                    <% }); %>
+                                        <%}%>
+                                            <tr>
+                                                <td></td>
+                                                <td style="display: none"></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="add manipulation" onclick="document.getElementById('id01').style.display='block'">Thêm SP</td>
+                                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            </div>
+            <!-- upload dialog  -->
+            <div id="id01" class="modal">
+                <form class="modal-content animate container" action="/upload" method="post" enctype="multipart/form-data">
+                    <h1>Đăng sản phẩm<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Đóng cửa sổ">&times;</span></h1>
 
-            <!-- <label for="name"><b>Tên</b></label> -->
-            <input type="text" placeholder="Nhập tên sản phẩm" id="nameId" name="name" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập tên sản phẩm')" oninput="setCustomValidity('')">
+                    <!-- <label for="name"><b>Tên</b></label> -->
+                    <input type="text" placeholder="Nhập tên sản phẩm" id="nameId" name="name" required="" oninvalid="this.setCustomValidity('Vui lòng nhập tên sản phẩm')" oninput="setCustomValidity('')">
 
-            <!-- <label for="price"><b>Giá</b></label> -->
-            <input type="text" placeholder="Nhập giá sản phẩm" name="price" id="priceId" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập giá sản phẩm')" oninput="setCustomValidity('')"
-                onkeypress="return isNumberKey(event)">
+                    <!-- <label for="price"><b>Giá</b></label> -->
+                    <input type="text" placeholder="Nhập giá sản phẩm" name="price" id="priceId" required="" oninvalid="this.setCustomValidity('Vui lòng nhập giá sản phẩm')" oninput="setCustomValidity('')" onkeypress="return isNumberKey(event)">
 
-            <!-- <label for="phone"><b>Điện thoại</b></label> -->
-            <input type="text" placeholder="Nhập số điện thoại" name="phone" id="phonenumberId" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại liên hệ')"
-                oninput="setCustomValidity('')" onkeyup="return displayWordCounter();"
-                onkeypress="return isNumberKey(event)">
+                    <!-- <label for="phone"><b>Điện thoại</b></label> -->
+                    <input type="text" placeholder="Nhập số điện thoại" name="phone" id="phonenumberId" required="" oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại liên hệ')" oninput="setCustomValidity('')" onkeyup="return displayWordCounter();" onkeypress="return isNumberKey(event)">
 
-            <label for="imageUpload" class="btn btn-primary btn-block chooseFile" id="Label1" name="aaaaa" style="overflow: hidden">Nhấp vào đây để chọn
+                    <label for="imageUpload" class="btn btn-primary btn-block chooseFile" id="Label1" name="aaaaa" style="overflow: hidden">Nhấp vào đây để chọn
                 ảnh</label>
-            <input type="file" accept="image/*" name="photo" required="" id="imageUpload" style="display: none"
-                oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
+                    <input type="file" accept="image/*" name="photo" required="" id="imageUpload" style="display: none" oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
 
-            <button id="upload" type="submit" class="btn">Đăng</button>
-        </form>
-    </div>
+                    <button id="upload" type="submit" class="btn">Đăng</button>
+                </form>
+            </div>
 
-    <!-- editDialog -->
-    <div id="id02" class="modal">
-        <form class="modal-content animate container" action="/edit" method="post" enctype="multipart/form-data">
-            <h1>Chỉnh sửa<span onclick="document.getElementById('id02').style.display='none'" class="close"
-                    title="Đóng cửa sổ">&times;</span></h1>
+            <!-- editDialog -->
+            <div id="id02" class="modal">
+                <form class="modal-content animate container" action="/edit" method="post" enctype="multipart/form-data">
+                    <h1>Chỉnh sửa<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Đóng cửa sổ">&times;</span></h1>
 
-            <input type="text" placeholder="Nhập tên sản phẩm" class="edit_name" id="edit_name_id" name="edit_name" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập tên sản phẩm')" oninput="setCustomValidity('')">
+                    <input type="text" placeholder="Nhập tên sản phẩm" class="edit_name" id="edit_name_id" name="edit_name" required="" oninvalid="this.setCustomValidity('Vui lòng nhập tên sản phẩm')" oninput="setCustomValidity('')">
 
-            <input type="text" placeholder="Nhập giá sản phẩm" class="edit_price" name="edit_price" id="edit_price_id" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập giá sản phẩm')" oninput="setCustomValidity('')"
-                onkeypress="return isNumberKey(event)">
+                    <input type="text" placeholder="Nhập giá sản phẩm" class="edit_price" name="edit_price" id="edit_price_id" required="" oninvalid="this.setCustomValidity('Vui lòng nhập giá sản phẩm')" oninput="setCustomValidity('')" onkeypress="return isNumberKey(event)">
 
-            <input type="text" placeholder="Nhập số điện thoại" class="edit_phone" name="edit_phone" id="edit_phone_id" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại liên hệ')"
-                oninput="setCustomValidity('')" onkeyup="return displayWordCounter();"
-                onkeypress="return isNumberKey(event)">
+                    <input type="text" placeholder="Nhập số điện thoại" class="edit_phone" name="edit_phone" id="edit_phone_id" required="" oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại liên hệ')" oninput="setCustomValidity('')" onkeyup="return displayWordCounter();"
+                        onkeypress="return isNumberKey(event)">
 
-            <!-- <label for="edit_file_id" class="btn btn-primary btn-block chooseFile edit_file" name="edit_file" id="Label2" style="overflow: hidden">Nhấp vào đây để chọn
+                    <!-- <label for="edit_file_id" class="btn btn-primary btn-block chooseFile edit_file" name="edit_file" id="Label2" style="overflow: hidden">Nhấp vào đây để chọn
                 ảnh</label>
             <input type="file" accept="image/*" name="edit_photo" class="edit_photo" required="" id="edit_file_id" style="display: none"
                 oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')"> -->
 
-            <input type="text" name="edit_id" class="edit_id" style="display: none">
+                    <input type="text" name="edit_id" class="edit_id" style="display: none">
 
-            <button id="edit" type="submit" class="btn">Hoàn tất</button>
-        </form>
-    </div>
+                    <button id="edit" type="submit" class="btn">Hoàn tất</button>
+                </form>
+            </div>
 
-    <!-- edit image dialog -->
-    <div id="id04" class="modal">
-        <form class="modal-content animate container" action="/editImage" method="post" enctype="multipart/form-data">
-            <h1>Sửa hình ảnh<span onclick="document.getElementById('id04').style.display='none'" class="close"
-                    title="Đóng cửa sổ">&times;</span></h1>
+            <!-- edit image dialog -->
+            <div id="id04" class="modal">
+                <form class="modal-content animate container" action="/editImage" method="post" enctype="multipart/form-data">
+                    <h1>Sửa hình ảnh<span onclick="document.getElementById('id04').style.display='none'" class="close" title="Đóng cửa sổ">&times;</span></h1>
 
-            <label for="edit_file_id" class="btn btn-primary btn-block chooseFile edit_file" name="edit_file" id="Label3" style="overflow: hidden">Nhấp vào đây để chọn
+                    <label for="edit_file_id" class="btn btn-primary btn-block chooseFile edit_file" name="edit_file" id="Label3" style="overflow: hidden">Nhấp vào đây để chọn
                 ảnh</label>
 
-            <input type="file" accept="image/*" name="edit_photo" class="edit_photo" required="" id="edit_file_id" style="display: none"
-                oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
+                    <input type="file" accept="image/*" name="edit_photo" class="edit_photo" required="" id="edit_file_id" style="display: none" oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
 
-            <input type="text" name="image_id" class="image_id" style="display: none">
+                    <input type="text" name="image_id" class="image_id" style="display: none">
 
-            <button id="edit_image" type="submit" class="btn">Hoàn tất</button>
-        </form>
-    </div>
+                    <button id="edit_image" type="submit" class="btn">Hoàn tất</button>
+                </form>
+            </div>
 
-    <!-- deleteRow Dialog -->
-    <div id="id03" class="delete">
-        <form class="deleteDialog container" action="/delete" method="post">
-            <h5>Bạn có chắc muốn xóa sản phẩm<span onclick="document.getElementById('id03').style.display='none'"
-                    class="close" title="Đóng cửa sổ">&times;</span></h5>
-            <h4 id="name_product_id" class="name_product" style="font-weight: bold"></h4>
-            <input type="text" name="delete_id" id="delete_id" style="display: none">
-            <button id="delete" type="submit" class="btn">Xóa</button>
-        </form>
-    </div>
+            <!-- deleteRow Dialog -->
+            <div id="id03" class="delete">
+                <form class="deleteDialog container" action="/delete" method="post">
+                    <h5>Bạn có chắc muốn xóa sản phẩm<span onclick="document.getElementById('id03').style.display='none'" class="close" title="Đóng cửa sổ">&times;</span></h5>
+                    <h4 id="name_product_id" class="name_product" style="font-weight: bold"></h4>
+                    <input type="text" name="delete_id" id="delete_id" style="display: none">
+                    <button id="delete" type="submit" class="btn">Xóa</button>
+                </form>
+            </div>
 
-    <section class="footer">
-        Phiên bản 1.0.0 - Được phát triển bởi VNT_team - 2019
-    </section>
-</body>
+            <section class="footer">
+                Phiên bản 1.0.0 - Được phát triển bởi VNT_team - 2019
+            </section>
+        </body>
 
-<script>
-    function isNumberKey(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-        return true;
-    }
-
-    // validate phone number
-    var setTotalNumberOfWordCounter = "10";
-    function displayWordCounter() {
-        // upload
-        var textValue = document.getElementsByName("phone")[0].value;
-        textValue = textValue.replace(/ /g, '');
-        var gettextLength = textValue.length;
-
-        if (gettextLength == setTotalNumberOfWordCounter) {
-            textValue = textValue.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
-            document.getElementsByName("phone")[0].value = textValue;
-        }
-
-        if (gettextLength > setTotalNumberOfWordCounter) {
-            textValue = textValue.replace(/ /g, '');
-            textValue = textValue.substring(0, setTotalNumberOfWordCounter);
-            textValue = textValue.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
-            document.getElementsByName("phone")[0].value = textValue;
-            return false;
-        }
-
-        // edit
-        var edit = document.getElementsByName("edit_phone")[0].value;
-        edit = edit.replace(/ /g, '');
-        var gettextLength = edit.length;
-
-        if (gettextLength == setTotalNumberOfWordCounter) {
-            edit = edit.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
-            document.getElementsByName("edit_phone")[0].value = edit;
-        }
-
-        if (gettextLength > setTotalNumberOfWordCounter) {
-            edit = edit.replace(/ /g, '');
-            edit = edit.substring(0, setTotalNumberOfWordCounter);
-            edit = edit.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
-            document.getElementsByName("edit_phone")[0].value = edit;
-            return false;
-        }
-    }
-
-    // format price in upload form
-    $('#priceId').keyup(function () {
-        var a = $(this).val();
-        document.getElementById('priceId').style.borderColor = "#ccc";
-        document.getElementById('priceId').style.backgroundColor = "#f1f1f1";
-        var temp = a.replace(/,/g, '');
-        var curren = temp.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-        document.getElementById("priceId").value = curren;
-    });
-    $('#nameId').keyup(function () {
-        document.getElementById('nameId').style.borderColor = "#ccc";
-        document.getElementById('nameId').style.backgroundColor = "#f1f1f1";
-    });
-    $('#phonenumberId').keyup(function () {
-        document.getElementById('phonenumberId').style.borderColor = "#ccc";
-        document.getElementById('phonenumberId').style.backgroundColor = "#f1f1f1";
-    });
-
-    // format price in edit form
-    $('#edit_price_id').keyup(function () {
-        var a = $(this).val();
-        document.getElementById('edit_price_id').style.borderColor = "#ccc";
-        document.getElementById('edit_price_id').style.backgroundColor = "#f1f1f1";
-        var temp = a.replace(/,/g, '');
-        var curren = temp.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-        document.getElementById("edit_price_id").value = curren;
-    });
-    $('#edit_name_id').keyup(function () {
-        document.getElementById('edit_name_id').style.borderColor = "#ccc";
-        document.getElementById('edit_name_id').style.backgroundColor = "#f1f1f1";
-    });
-    $('#edit_phone_id').keyup(function () {
-        document.getElementById('edit_phone_id').style.borderColor = "#ccc";
-        document.getElementById('edit_phone_id').style.backgroundColor = "#f1f1f1";
-    });
-
-    // format file
-    $(document).ready(function () {
-        $('input[type="file"]').change(function (e) {
-            var fileName = e.target.files[0].name;
-            document.getElementById('Label1').innerHTML = fileName;
-            document.getElementById('Label1').style.borderColor = "#ccc";
-            document.getElementById('Label1').style.backgroundColor = "#f1f1f1";
-
-            // document.getElementById('Label2').innerHTML = fileName;
-            // document.getElementById('Label2').style.borderColor = "#ccc";
-            // document.getElementById('Label2').style.backgroundColor = "#f1f1f1";
-
-            document.getElementById('Label3').innerHTML = fileName;
-            document.getElementById('Label3').style.borderColor = "#ccc";
-            document.getElementById('Label3').style.backgroundColor = "#f1f1f1";
-        });
-    });
-
-    //check empty upload
-    $('#upload').bind("click", function () {
-        var imgVal = $('#imageUpload').val();
-        var nameVal = $('#nameId').val();
-        var priceVal = $('#priceId').val();
-        var phoneNumberVal = $('#phonenumberId').val();
-        var check = true;
-
-        if (imgVal == '') {
-            document.getElementById('Label1').style.borderColor = "#ff5c33";
-            document.getElementById('Label1').style.backgroundColor = "#ffd6cc";
-            document.getElementById('Label1').innerHTML = "Bạn chưa chọn ảnh";
-            check = false;
-        }
-
-        if (nameVal == '') {
-            document.getElementById('nameId').style.backgroundColor = "#ffd6cc";
-            check = false;
-        }
-
-        if (priceVal == '') {
-            document.getElementById('priceId').style.backgroundColor = "#ffd6cc";
-            check = false;
-        }
-
-        if (phoneNumberVal == '') {
-            document.getElementById('phonenumberId').style.backgroundColor = "#ffd6cc";
-            check = false;
-        }
-        return check;
-    })
-
-    //check empty edit
-    $('#edit').bind("click", function () {
-        // var imgVal = $('#edit_file_id').val();
-        var nameVal = $('#edit_name_id').val();
-        var priceVal = $('#edit_price_id').val();
-        var phoneNumberVal = $('#edit_phone_id').val();
-        var check = true;
-
-        // if (imgVal == '') {
-        //     document.getElementById('Label2').style.borderColor = "#ff5c33";
-        //     document.getElementById('Label2').style.backgroundColor = "#ffd6cc";
-        //     document.getElementById('Label2').innerHTML = "Bạn chưa chọn ảnh";
-        //     check = false;
-        // }
-
-        if (nameVal == '') {
-            document.getElementById('edit_name_id').style.backgroundColor = "#ffd6cc";
-            check = false;
-        }
-
-        if (priceVal == '') {
-            document.getElementById('edit_price_id').style.backgroundColor = "#ffd6cc";
-            check = false;
-        }
-
-        if (phoneNumberVal == '') {
-            document.getElementById('edit_phone_id').style.backgroundColor = "#ffd6cc";
-            check = false;
-        }
-        return check;
-    })
-
-    // edit product
-    jQuery('.editbtn').on('click', function () {
-        document.getElementById('id02').style.display = 'block';
-        var $row = jQuery(this).closest('tr');
-        var $columns = $row.find('td');
-
-        $columns.addClass('row-highlight');
-        var values = "";
-
-        jQuery.each($columns, function (i, item) {
-            if (i == 1) {
-                $('.edit_id').val(item.innerHTML);
+        <script>
+            function isNumberKey(evt) {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    return false;
+                return true;
             }
-            else if (i == 2) {
-                $('.edit_name').val(item.innerHTML);
-            }
-            else if (i == 3) {
-                $('.edit_price').val(item.innerHTML);
-            }
-            else if (i == 4) {
-                $('.edit_phone').val(item.innerHTML);
-            }
-            else if (i == 5) {
-                var temp = getFilename(item.innerHTML);
-                $('.edit_file').text(temp);
-            }
-        });
-    });
 
-    // handling edit image
-    var currentImage;
-    jQuery('.image').on('click', function () {
-        var $row = jQuery(this).closest('tr');
-        var $columns = $row.find('td');
+            // validate phone number
+            var setTotalNumberOfWordCounter = "10";
 
-        $columns.addClass('row-highlight');
-        var values = "";
+            function displayWordCounter() {
+                // upload
+                var textValue = document.getElementsByName("phone")[0].value;
+                textValue = textValue.replace(/ /g, '');
+                var gettextLength = textValue.length;
 
-        jQuery.each($columns, function (i, item) {
-            if(i == 1){
-                $('.image_id').val(item.innerHTML);
+                if (gettextLength == setTotalNumberOfWordCounter) {
+                    textValue = textValue.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
+                    document.getElementsByName("phone")[0].value = textValue;
+                }
+
+                if (gettextLength > setTotalNumberOfWordCounter) {
+                    textValue = textValue.replace(/ /g, '');
+                    textValue = textValue.substring(0, setTotalNumberOfWordCounter);
+                    textValue = textValue.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
+                    document.getElementsByName("phone")[0].value = textValue;
+                    return false;
+                }
+
+                // edit
+                var edit = document.getElementsByName("edit_phone")[0].value;
+                edit = edit.replace(/ /g, '');
+                var gettextLength = edit.length;
+
+                if (gettextLength == setTotalNumberOfWordCounter) {
+                    edit = edit.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
+                    document.getElementsByName("edit_phone")[0].value = edit;
+                }
+
+                if (gettextLength > setTotalNumberOfWordCounter) {
+                    edit = edit.replace(/ /g, '');
+                    edit = edit.substring(0, setTotalNumberOfWordCounter);
+                    edit = edit.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
+                    document.getElementsByName("edit_phone")[0].value = edit;
+                    return false;
+                }
             }
-            if (i == 5) {
-                var temp = getFilename(item.innerHTML);
-                $('.edit_file').text(temp);
-                currentImage = temp;
+
+            // format price in upload form
+            $('#priceId').keyup(function() {
+                var a = $(this).val();
+                document.getElementById('priceId').style.borderColor = "#ccc";
+                document.getElementById('priceId').style.backgroundColor = "#f1f1f1";
+                var temp = a.replace(/,/g, '');
+                var curren = temp.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("priceId").value = curren;
+            });
+            $('#nameId').keyup(function() {
+                document.getElementById('nameId').style.borderColor = "#ccc";
+                document.getElementById('nameId').style.backgroundColor = "#f1f1f1";
+            });
+            $('#phonenumberId').keyup(function() {
+                document.getElementById('phonenumberId').style.borderColor = "#ccc";
+                document.getElementById('phonenumberId').style.backgroundColor = "#f1f1f1";
+            });
+
+            // format price in edit form
+            $('#edit_price_id').keyup(function() {
+                var a = $(this).val();
+                document.getElementById('edit_price_id').style.borderColor = "#ccc";
+                document.getElementById('edit_price_id').style.backgroundColor = "#f1f1f1";
+                var temp = a.replace(/,/g, '');
+                var curren = temp.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                document.getElementById("edit_price_id").value = curren;
+            });
+            $('#edit_name_id').keyup(function() {
+                document.getElementById('edit_name_id').style.borderColor = "#ccc";
+                document.getElementById('edit_name_id').style.backgroundColor = "#f1f1f1";
+            });
+            $('#edit_phone_id').keyup(function() {
+                document.getElementById('edit_phone_id').style.borderColor = "#ccc";
+                document.getElementById('edit_phone_id').style.backgroundColor = "#f1f1f1";
+            });
+
+            // format file
+            $(document).ready(function() {
+                $('input[type="file"]').change(function(e) {
+                    var fileName = e.target.files[0].name;
+                    document.getElementById('Label1').innerHTML = fileName;
+                    document.getElementById('Label1').style.borderColor = "#ccc";
+                    document.getElementById('Label1').style.backgroundColor = "#f1f1f1";
+
+                    // document.getElementById('Label2').innerHTML = fileName;
+                    // document.getElementById('Label2').style.borderColor = "#ccc";
+                    // document.getElementById('Label2').style.backgroundColor = "#f1f1f1";
+
+                    document.getElementById('Label3').innerHTML = fileName;
+                    document.getElementById('Label3').style.borderColor = "#ccc";
+                    document.getElementById('Label3').style.backgroundColor = "#f1f1f1";
+                });
+            });
+
+            //check empty upload
+            $('#upload').bind("click", function() {
+                var imgVal = $('#imageUpload').val();
+                var nameVal = $('#nameId').val();
+                var priceVal = $('#priceId').val();
+                var phoneNumberVal = $('#phonenumberId').val();
+                var check = true;
+
+                if (imgVal == '') {
+                    document.getElementById('Label1').style.borderColor = "#ff5c33";
+                    document.getElementById('Label1').style.backgroundColor = "#ffd6cc";
+                    document.getElementById('Label1').innerHTML = "Bạn chưa chọn ảnh";
+                    check = false;
+                }
+
+                if (nameVal == '') {
+                    document.getElementById('nameId').style.backgroundColor = "#ffd6cc";
+                    check = false;
+                }
+
+                if (priceVal == '') {
+                    document.getElementById('priceId').style.backgroundColor = "#ffd6cc";
+                    check = false;
+                }
+
+                if (phoneNumberVal == '') {
+                    document.getElementById('phonenumberId').style.backgroundColor = "#ffd6cc";
+                    check = false;
+                }
+                return check;
+            })
+
+            //check empty edit
+            $('#edit').bind("click", function() {
+                // var imgVal = $('#edit_file_id').val();
+                var nameVal = $('#edit_name_id').val();
+                var priceVal = $('#edit_price_id').val();
+                var phoneNumberVal = $('#edit_phone_id').val();
+                var check = true;
+
+                // if (imgVal == '') {
+                //     document.getElementById('Label2').style.borderColor = "#ff5c33";
+                //     document.getElementById('Label2').style.backgroundColor = "#ffd6cc";
+                //     document.getElementById('Label2').innerHTML = "Bạn chưa chọn ảnh";
+                //     check = false;
+                // }
+
+                if (nameVal == '') {
+                    document.getElementById('edit_name_id').style.backgroundColor = "#ffd6cc";
+                    check = false;
+                }
+
+                if (priceVal == '') {
+                    document.getElementById('edit_price_id').style.backgroundColor = "#ffd6cc";
+                    check = false;
+                }
+
+                if (phoneNumberVal == '') {
+                    document.getElementById('edit_phone_id').style.backgroundColor = "#ffd6cc";
+                    check = false;
+                }
+                return check;
+            })
+
+            // edit product
+            jQuery('.editbtn').on('click', function() {
+                document.getElementById('id02').style.display = 'block';
+                var $row = jQuery(this).closest('tr');
+                var $columns = $row.find('td');
+
+                $columns.addClass('row-highlight');
+                var values = "";
+
+                jQuery.each($columns, function(i, item) {
+                    if (i == 1) {
+                        $('.edit_id').val(item.innerHTML);
+                    } else if (i == 2) {
+                        $('.edit_name').val(item.innerHTML);
+                    } else if (i == 3) {
+                        $('.edit_price').val(item.innerHTML);
+                    } else if (i == 4) {
+                        $('.edit_phone').val(item.innerHTML);
+                    } else if (i == 5) {
+                        var temp = getFilename(item.innerHTML);
+                        $('.edit_file').text(temp);
+                    }
+                });
+            });
+
+            // handling edit image
+            var currentImage;
+            jQuery('.image').on('click', function() {
+                var $row = jQuery(this).closest('tr');
+                var $columns = $row.find('td');
+
+                $columns.addClass('row-highlight');
+                var values = "";
+
+                jQuery.each($columns, function(i, item) {
+                    if (i == 1) {
+                        $('.image_id').val(item.innerHTML);
+                    }
+                    if (i == 5) {
+                        var temp = getFilename(item.innerHTML);
+                        $('.edit_file').text(temp);
+                        currentImage = temp;
+                    }
+                });
+            });
+            jQuery('#edit_image').on('click', function() {
+                var temp = $("#Label3").text();
+                if (temp == currentImage) {
+                    document.getElementById('id04').style.display = 'none';
+                    return false;
+                }
+            });
+
+            function getFilename(fileName) {
+                var temp = fileName.split("/");
+                var result = temp[2].split("\"");
+                return result[0];
             }
-        });
-    });
-    jQuery('#edit_image').on('click', function () {
-        var temp = $("#Label3").text();
-        if(temp == currentImage){
-            document.getElementById('id04').style.display='none';
-            return false;
-        }
-    });
-    function getFilename(fileName){
-        var temp = fileName.split("/");
-        var result = temp[2].split("\"");
-        return result[0];
-    }
 
-    // delete
-    jQuery('.deletebtn').on('click', function () {
-        document.getElementById('id03').style.display = 'block';
-        var $row = jQuery(this).closest('tr');
-        var $columns = $row.find('td');
+            // delete
+            jQuery('.deletebtn').on('click', function() {
+                document.getElementById('id03').style.display = 'block';
+                var $row = jQuery(this).closest('tr');
+                var $columns = $row.find('td');
 
-        $columns.addClass('row-highlight');
-        var values = "";
+                $columns.addClass('row-highlight');
+                var values = "";
 
-        jQuery.each($columns, function (i, item) {
-            if (i == 1) {
-                $('#delete_id').val(item.innerHTML);
+                jQuery.each($columns, function(i, item) {
+                    if (i == 1) {
+                        $('#delete_id').val(item.innerHTML);
+                    } else if (i == 2) {
+                        $('#name_product_id').text(item.innerHTML);
+                    }
+                });
+            });
+
+            // Get the modal
+            var modal = document.getElementById('id01');
+            var modal2 = document.getElementById('id02');
+            var modal3 = document.getElementById('id03');
+            var modal4 = document.getElementById('id04');
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                if (event.target == modal2) {
+                    modal2.style.display = "none";
+                }
+                if (event.target == modal3) {
+                    modal3.style.display = "none";
+                }
+                if (event.target == modal4) {
+                    modal4.style.display = "none";
+                }
             }
-            else if(i == 2){
-                $('#name_product_id').text(item.innerHTML);
-            }
-        });
-    });
 
-    // Get the modal
-    var modal = document.getElementById('id01');
-    var modal2 = document.getElementById('id02');
-    var modal3 = document.getElementById('id03');
-    var modal4 = document.getElementById('id04');
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-        if (event.target == modal2) {
-            modal2.style.display = "none";
-        }
-        if (event.target == modal3) {
-            modal3.style.display = "none";
-        }
-        if (event.target == modal4) {
-            modal4.style.display = "none";
-        }
-    }
+            // ID
+            $(document).ready(function() {
+                var id = 0;
+                $("tr").each(function() {
+                    var temp = $(this).find("td:first").html(id);
+                    id++;
+                });
+            });
+        </script>
 
-    // ID
-    $(document).ready(function () {
-        var id = 0;
-        $("tr").each(function(){
-            var temp = $(this).find("td:first").html(id);
-            id++;
-        });
-    });
-</script>
 </html>

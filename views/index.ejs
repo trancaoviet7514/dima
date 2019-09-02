@@ -1,75 +1,76 @@
 <% var weather; %>
-<% var error; %>
-<!DOCTYPE html>
-<html lang="en">
-<%var products %>
+    <% var error; %>
+        <!DOCTYPE html>
+        <html lang="en">
+        <%var products %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Trang chủ</title>
+                <link rel="shortcut icon" href="image/logo05.png">
+                <link rel="apple-touch-icon" href="image/logo05.png">
+                <link rel="icon" href="image/logo05.png">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+                <link rel="stylesheet" href="css/main.css">
+            </head>
 
-    <link rel="stylesheet" href="css/main.css">
-</head>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script type="text/javascript" src="typeahead.min.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('input.typeahead').typeahead({
+                        name: 'countries',
+                        remote: 'http://localhost:3000/search?key=%QUERY',
+                        limit: 10
+                    });
+                });
+            </script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="typeahead.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('input.typeahead').typeahead({
-            name: 'countries',
-            remote: 'http://localhost:3000/search?key=%QUERY',
-            limit: 10
-        });
-    });
-</script>
-
-<body>
-    <div class="top-nav-bar">
-        <a href=""><img src="image/icon2.png" alt="" class="logo"></a>
-        <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
-            <div class="search-box">
-                <!-- <i class="fa fa-bars" id="menu-btn" onclick="openmenu()" aria-hidden="true"></i>
+            <body>
+                <div class="top-nav-bar">
+                    <a href=""><img src="image/logo05.png" alt="" class="logo"></a>
+                    <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
+                        <div class="search-box">
+                            <!-- <i class="fa fa-bars" id="menu-btn" onclick="openmenu()" aria-hidden="true"></i>
                 <i class="fa fa-times" id="close-btn" onclick="closemenu()" aria-hidden="true"></i> -->
-                <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false"
-                    class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
-                <button type="submit" class="searchButton">
+                            <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false" class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
+                            <button type="submit" class="searchButton">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
-            </div>
-        </form>
+                        </div>
+                    </form>
 
-        <div class="menu-bar">
-            <ul>
-                <!-- <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                    <div class="menu-bar">
+                        <ul>
+                            <!-- <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                     Cart</a></li>  -->
-                <li><a href="/login">Đăng nhập</a></li>
-                <li><a href="/signup">Đăng ký</a></li>
-                <li><a href="/upload">Đăng sách</a></li>
-            </ul>
-        </div>
-    </div>
+                            <li><a href="/login">Đăng nhập</a></li>
+                            <li><a href="/signup">Đăng ký</a></li>
+                            <li><a href="/upload">Đăng sách</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-    <div class="filter-bar">
-        <ul>
-            <li><a href="">Mới</a></li>
-            <li><a href="">Sách</a></li>
-            <li><a href="">Đồ dùng</a></li>
-            <li><a href="">Quần áo</a></li>
-            <li><a href="">Khác</a></li>
-        </ul>
-    </div>
+                <div class="filter-bar">
+                    <ul>
+                        <li><a href="">Mới</a></li>
+                        <li><a href="">Sách</a></li>
+                        <li><a href="">Đồ dùng</a></li>
+                        <li><a href="">Quần áo</a></li>
+                        <li><a href="">Khác</a></li>
+                    </ul>
+                </div>
 
-    <section class="header">
-        <!-- <div class="side-menu" id="side-menu">
+                <section class="header">
+                    <!-- <div class="side-menu" id="side-menu">
             <ul>
                 <li>Sản phẩm mới<i class="fa fa-angle-right" aria-hidden="true"></i>
                     <ul class="childMenu">
@@ -89,7 +90,7 @@
                 </li>
             </ul>
         </div> -->
-        <!-- <div class="slider">
+                    <!-- <div class="slider">
                         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
@@ -117,10 +118,10 @@
                             </a>
                         </div>
                     </div> -->
-    </section>
+                </section>
 
-    <!-- featured-categories -->
-    <!-- <section class="featured-categories">
+                <!-- featured-categories -->
+                <!-- <section class="featured-categories">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4">
@@ -136,30 +137,30 @@
                     </div>
                 </section> -->
 
-    <!-- on sale product -->
-    <section class="on-sale">
-        <div class="container sachmoi">
-            <!-- <div class="title-box firsttitle">
+                <!-- on sale product -->
+                <section class="on-sale">
+                    <div class="container sachmoi">
+                        <!-- <div class="title-box firsttitle">
                 <h2>Sách mới</h2>
             </div> -->
-            <div class="row" id="listProduct">
-                <% if(products != null) { %>
+                        <div class="row" id="listProduct">
+                            <% if(products != null) { %>
 
-                <% if(products.length == 0) { %>
-                <h1 style="margin: 0 auto;">NOT FOUND</h1>
-                <p style="width: 100%; text-align: center; margin-bottom: 5px;">Không tìm thấy sản phẩm nào</p><br>
-                <%}%>
+                                <% if(products.length == 0) { %>
+                                    <h1 style="margin: 0 auto;">NOT FOUND</h1>
+                                    <p style="width: 100%; text-align: center; margin-bottom: 5px;">Không tìm thấy sản phẩm nào</p><br>
+                                    <%}%>
 
-                <% products.forEach(function(product) { %>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <div class="product-top">
-                            <%var str = `${product.image}` %>
-                            <img src="<%= str%>" alt="" class="img-responsive">
+                                        <% products.forEach(function(product) { %>
+                                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                                <div class="box">
+                                                    <div class="product-top">
+                                                        <%var str = `${product.image}` %>
+                                                            <img src="<%= str%>" alt="" class="img-responsive">
 
-                            <!-- nút bấm bên phải hình -->
+                                                            <!-- nút bấm bên phải hình -->
 
-                            <!-- <div class="overlay-right">
+                                                            <!-- <div class="overlay-right">
                                                   <button type="button" class="btn btn-secondary" title="Quick Shop">
                                                       <i class="fa fa-eye" aria-hidden="true"></i>
                                                   </button>
@@ -170,26 +171,31 @@
                                                       <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                   </button>
                                               </div> -->
-                        </div>
-                        <div class="product-bottom">
-                            <!-- <i class="fa fa-star" aria-hidden="true"></i>
+                                                    </div>
+                                                    <div class="product-bottom">
+                                                        <!-- <i class="fa fa-star" aria-hidden="true"></i>
                                               <i class="fa fa-star" aria-hidden="true"></i>
                                               <i class="fa fa-star" aria-hidden="true"></i>
                                               <i class="fa fa-star" aria-hidden="true"></i>
                                               <i class="fa fa-star-half-o" aria-hidden="true"></i> -->
-                            <h3><%= product.name%></h3>
-                            <h5 class="x">Giá: <%= product.price%> VNĐ</h5>
-                            <h5 class="y">Liên hệ: <%= product.phone%></h5>
+                                                        <h3>
+                                                            <%= product.name%>
+                                                        </h3>
+                                                        <h5 class="x">Giá:
+                                                            <%= product.price%> VNĐ</h5>
+                                                        <h5 class="y">Liên hệ:
+                                                            <%= product.phone%>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }); %>
+                                                <%}%>
                         </div>
                     </div>
-                </div>
-                <% }); %>
-                <%}%>
-            </div>
-        </div>
-    </section>
+                </section>
 
-    <!-- Website features
+                <!-- Website features
                 <section class="website-features">
                     <div class="container">
                         <div class="row">
@@ -221,8 +227,8 @@
                     </div>
                 </section> -->
 
-    <!-- footer  -->
-    <!-- <section class="footer">
+                <!-- footer  -->
+                <!-- <section class="footer">
         <div class="container text-center text-md-left">
             <div class="row">
                 <div class="col-md-3">
@@ -242,38 +248,38 @@
         </div>
         Phiên bản 1.0.0 - Được phát triển bởi 70x team - 2019
     </section> -->
-    <div class="footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-5 col-xs-12 about-company">
-              <h4>Giới thiệu</h4>
-              <p class="pr-5 text-black-50">Tổ chức của chúng tôi là một tổ chức phi lợi nhuận. Mục đích của sản phẩm là dùng để chia sẻ những vật dụng không còn nhu cầu sử dụng, ví dụ như sách vở.</p>
-            </div>
-            <div class="col-lg-3 col-xs-12 links">
-              <h4 class="mt-lg-0 mt-sm-3">Tham khảo</h4>
-                <ul class="m-0 p-0">
-                  <li>- <a href="#">Chính sách bảo mật</a></li>
-                  <li>- <a href="#">Tuyển dụng</a></li>
-                </ul>
-            </div>
-            <div class="col-lg-4 col-xs-12 location">
-              <h4 class="mt-lg-0 mt-sm-4">Liên hệ</h4>
-              <p><i class="fa fa-map-marker" aria-hidden="true"></i>135B Trần Hưng Đạo, Cầu Ông Lãnh, Quận 1, TP Hồ Chí Minh</p>
-              <p><img class="zalo-icon" src="image/zaloicon.png" alt=""> 0934 773 909</p>
-              <p><i class="fa fa-envelope-o mr-3"></i>trancaoviet7514@gmail.com</p>
-              <a href="https://www.facebook.com/trancaoviet"><i class="fa fa-facebook-square"></i>https://www.facebook.com/trancaoviet</a>
-            </div>
-          </div>
-          <div class="row mt-5">
-            <div class="col copyright">
-              <p class=""><small class="text-black-50">© 2019. Phiên bản 1.0.0. Được phát triển bởi ___team.</small></p>
-            </div>
-          </div>
-        </div>
-        </div>
-    <!-- Footer -->
-    <!-- Nút menu -->
-    <!-- <script>
+                <div class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5 col-xs-12 about-company">
+                                <h4>Giới thiệu</h4>
+                                <p class="pr-5 text-black-50">Tổ chức của chúng tôi là một tổ chức phi lợi nhuận. Mục đích của sản phẩm là dùng để chia sẻ những vật dụng không còn nhu cầu sử dụng, ví dụ như sách vở.</p>
+                            </div>
+                            <div class="col-lg-3 col-xs-12 links">
+                                <h4 class="mt-lg-0 mt-sm-3">Tham khảo</h4>
+                                <ul class="m-0 p-0">
+                                    <li>- <a href="#">Chính sách bảo mật</a></li>
+                                    <li>- <a href="#">Tuyển dụng</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 col-xs-12 location">
+                                <h4 class="mt-lg-0 mt-sm-4">Liên hệ</h4>
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>135B Trần Hưng Đạo, Cầu Ông Lãnh, Quận 1, TP Hồ Chí Minh</p>
+                                <p><img class="zalo-icon" src="image/zaloicon.png" alt=""> 0934 773 909</p>
+                                <p><i class="fa fa-envelope-o mr-3"></i>trancaoviet7514@gmail.com</p>
+                                <a href="https://www.facebook.com/trancaoviet"><i class="fa fa-facebook-square"></i>https://www.facebook.com/trancaoviet</a>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col copyright">
+                                <p class=""><small class="text-black-50">© 2019. Phiên bản 1.0.0. Được phát triển bởi ___team.</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <!-- Nút menu -->
+                <!-- <script>
         function openmenu() {
             document.getElementById("side-menu").style.display = "block";
             document.getElementById("menu-btn").style.display = "none";
@@ -285,39 +291,39 @@
             document.getElementById("close-btn").style.display = "none";
         }
     </script> -->
-</body>
+            </body>
 
-<script>
-    // var createCallBack = function () { //First function
-    //     // var y = document.getElementById("x").textContent;
-    //     // console.log(y);
-    //     // var array = document.querySelectorAll("h5");
-    //     var array = document.getElementsByClassName("x");
-    //     for (var i = 0; i < array.length; i++) {
-    //         array[i].innerHTML = formatCurrency(array[i].textContent);
-    //     }
-    // }
+            <script>
+                // var createCallBack = function () { //First function
+                //     // var y = document.getElementById("x").textContent;
+                //     // console.log(y);
+                //     // var array = document.querySelectorAll("h5");
+                //     var array = document.getElementsByClassName("x");
+                //     for (var i = 0; i < array.length; i++) {
+                //         array[i].innerHTML = formatCurrency(array[i].textContent);
+                //     }
+                // }
 
-    // function formatCurrency(num) {
-    //     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-    // }
+                // function formatCurrency(num) {
+                //     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+                // }
 
-    // var createCallBack2 = function () { //First function
-    //     // var y = document.getElementById("x").textContent;
-    //     // console.log(y);
-    //     // var array = document.querySelectorAll("h5");
-    //     var array = document.getElementsByClassName("y");
-    //     for (var i = 0; i < array.length; i++) {
-    //         array[i].innerHTML = formatPhoneNumber(array[i].textContent);
-    //     }
-    // }
+                // var createCallBack2 = function () { //First function
+                //     // var y = document.getElementById("x").textContent;
+                //     // console.log(y);
+                //     // var array = document.querySelectorAll("h5");
+                //     var array = document.getElementsByClassName("y");
+                //     for (var i = 0; i < array.length; i++) {
+                //         array[i].innerHTML = formatPhoneNumber(array[i].textContent);
+                //     }
+                // }
 
-    // function formatPhoneNumber(num) {
-    //     text = num.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
-    //     return text;
-    // }
+                // function formatPhoneNumber(num) {
+                //     text = num.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
+                //     return text;
+                // }
 
-    // window.onload = function () { createCallBack(); createCallBack2()}; // caller 7
-</script>
+                // window.onload = function () { createCallBack(); createCallBack2()}; // caller 7
+            </script>
 
-</html>
+        </html>

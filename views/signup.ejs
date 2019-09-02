@@ -51,6 +51,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/upload.css">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <title>Đăng kí tài khoản</title>
+    <link rel="shortcut icon" href="image/logo05.png">
+    <link rel="apple-touch-icon" href="image/logo05.png">
+    <link rel="icon" href="image/logo05.png">
 </head>
 
 <body>
@@ -59,16 +63,13 @@
             <h1>Tạo tài khoản mới</h1>
 
             <!-- <label for="username"><b>Tên đăng nhập</b></label> -->
-            <input type="text" placeholder="Tên đăng nhập" name="username" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập tên đăng nhập')" oninput="setCustomValidity('')">
+            <input type="text" placeholder="Tên đăng nhập" name="username" required="" oninvalid="this.setCustomValidity('Vui lòng nhập tên đăng nhập')" oninput="setCustomValidity('')">
 
             <!-- <label for="password"><b>Mật khẩu</b></label> -->
-            <input type="password" placeholder="Mật khẩu" name="password"  required=""
-            oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="setCustomValidity('')">
+            <input type="password" placeholder="Mật khẩu" name="password" required="" oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="setCustomValidity('')">
 
             <!-- <label for="rePassword"><b>Mật khẩu</b></label> -->
-            <input type="password" placeholder="Nhập lại mật khẩu" name="rePassword"  required=""
-            oninvalid="this.setCustomValidity('Vui lòng nhập lại mật khẩu')" oninput="setCustomValidity('')">
+            <input type="password" placeholder="Nhập lại mật khẩu" name="rePassword" required="" oninvalid="this.setCustomValidity('Vui lòng nhập lại mật khẩu')" oninput="setCustomValidity('')">
 
             <!-- <label for="price"><b>Giá</b></label>
             <input type="password" placeholder="Nhập mật khẩu" name="price" id="priceId" required=""
@@ -108,6 +109,7 @@
 
     // validate phone number
     var setTotalNumberOfWordCounter = "10";
+
     function displayWordCounter() {
         var textValue = document.getElementsByName("phone")[0].value;
         textValue = textValue.replace(/ /g, '');
@@ -128,7 +130,7 @@
     }
 
     // format price
-    $('#priceId').keyup(function () {
+    $('#priceId').keyup(function() {
         var a = $(this).val();
         var temp = a.replace(/,/g, '');
         var curren = temp.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
@@ -147,8 +149,8 @@
     // });
 
     // file
-    $(document).ready(function(){
-        $('input[type="file"]').change(function(e){
+    $(document).ready(function() {
+        $('input[type="file"]').change(function(e) {
             var fileName = e.target.files[0].name;
             document.getElementById('Label1').innerHTML = fileName;
         });
