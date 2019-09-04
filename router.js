@@ -1,24 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const multer = require('multer');
-const upload = multer({dest: __dirname + '/public/image'});
+const upload = multer({ dest: __dirname + '/public/image' });
 const mime = require('mime')
 
 const { Client } = require("pg");
 const client = new Client({
-  user: 'yujeunvafgnwbm',
-  host: 'ec2-23-21-186-85.compute-1.amazonaws.com',
-  database: 'd65ufhdinrm8ir',
-  password: '540742461b897e1d6e2d342f4cd4e6b055c7abf55db717767ba87aa89968ee2a',
-  port: 5432,
-  ssl: true
+    user: 'yujeunvafgnwbm',
+    host: 'ec2-23-21-186-85.compute-1.amazonaws.com',
+    database: 'd65ufhdinrm8ir',
+    password: '540742461b897e1d6e2d342f4cd4e6b055c7abf55db717767ba87aa89968ee2a',
+    port: 5432,
+    ssl: true
 })
 
-const keyFilename="./dima-fc345-firebase-adminsdk-a1u59-35ff50d6c5.json"; //replace this with api key file
+const keyFilename = "./dima-fc345-firebase-adminsdk-a1u59-35ff50d6c5.json"; //replace this with api key file
 const projectId = "dima-fc345" //replace with your project id
 const bucketName = `${projectId}.appspot.com`;
 
-const {Storage} = require('@google-cloud/storage')
+const { Storage } = require('@google-cloud/storage')
 
 const gcs = new Storage({
     projectId,
@@ -28,110 +28,114 @@ const gcs = new Storage({
 const bucket = gcs.bucket(bucketName);
 
 client.connect()
-router.get('/', function (req, res) {    
-  var getAllBookStr = 'select * from book'
-  client.query(getAllBookStr, function(err, results) {
-    if (err) throw err;
-    res.render("index", { products: results.rows });
-  });
+router.get('/', function(req, res) {
+    var getAllBookStr = 'select * from book'
+    client.query(getAllBookStr, function(err, results) {
+        if (err) throw err;
+        res.render("index", { products: results.rows });
+    });
 });
 
 router.get("/upload", function(req, res) {
-  res.render("upload");
+    res.render("upload");
 
-  router.get("/login", function(req, res) {
-    res.render("login");
-  });
+    router.get("/login", function(req, res) {
+        res.render("login");
+    });
 
-  router.get("/signup", function(req, res) {
-    res.render("signup");
-  });
+    router.get("/signup", function(req, res) {
+        res.render("signup");
+    });
+
+    router.get("/privacy", function(req, res) {
+        res.render("privacy");
+    })
 });
-
+router.get("/privacy", function(req, res) {
+    res.render("privacy");
+});
 router.get("/personalPage", function(req, res) {
-  var getAllBookStr = "select * from book";
-  client.query(getAllBookStr, function(err, results) {
-    if (err) throw err;
-    res.render("personalPage", { products: results.rows });
-  });
+    var getAllBookStr = "select * from book";
+    client.query(getAllBookStr, function(err, results) {
+        if (err) throw err;
+        res.render("personalPage", { products: results.rows });
+    });
 })
 
 router.post('/upload', upload.single('photo'), (req, res) => {
-  
-  const filePath = `./public/image/${req.file.filename}`;
-  const uploadTo = `image/${req.file.filename}`;
-  const fileMime = mime.lookup(filePath);
 
-  bucket.upload(filePath,{
-      destination:uploadTo,
-      public:true,
-      metadata: {contentType: fileMime,cacheControl: "public, max-age=300"}
-  }, function(err, file) {
-      if(err)
-      {
-          console.log(err);
-          return;
-      }
-      console.log(createPublicFileURL(uploadTo));
-      var insertStr = `INSERT into book(name, price, image, phone) 
+    const filePath = `./public/image/${req.file.filename}`;
+    const uploadTo = `image/${req.file.filename}`;
+    const fileMime = mime.lookup(filePath);
+
+    bucket.upload(filePath, {
+        destination: uploadTo,
+        public: true,
+        metadata: { contentType: fileMime, cacheControl: "public, max-age=300" }
+    }, function(err, file) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log(createPublicFileURL(uploadTo));
+        var insertStr = `INSERT into book(name, price, image, phone) 
                   values(\'${req.body.name}\',
                   N\'${req.body.price}\',
                   \'${createPublicFileURL(uploadTo)}\',
                   \'${req.body.phone}\')`
-      client.query(insertStr, function(err, results) {
-          if (err) throw err;
-          console.log("Insert a record!");
-      });
-      if(req.file) {        
-          res.redirect('/')
-      }
-      else throw 'error';
-      });
+        client.query(insertStr, function(err, results) {
+            if (err) throw err;
+            console.log("Insert a record!");
+        });
+        if (req.file) {
+            res.redirect('/')
+        } else throw 'error';
+    });
 });
 
 // edit
 router.post("/edit", upload.single("edit_photo"), (req, res) => {
-  var editQur = `UPDATE book SET name = \'${req.body.edit_name}\', price = \'${req.body.edit_price}\', phone = \'${req.body.edit_phone}\' WHERE id = \'${req.body.edit_id}\'`;
-  client.query(editQur, function(err, results) {
-    if (err) throw err;
-    console.log("Edited");
-    res.redirect("/personalPage");
-  });
+    var editQur = `UPDATE book SET name = \'${req.body.edit_name}\', price = \'${req.body.edit_price}\', phone = \'${req.body.edit_phone}\' WHERE id = \'${req.body.edit_id}\'`;
+    client.query(editQur, function(err, results) {
+        if (err) throw err;
+        console.log("Edited");
+        res.redirect("/personalPage");
+    });
 });
 
 // delete
 router.post("/delete", (req, res) => {
-  // DELETE FROM table_name WHERE [condition];
-  var deleteQr = `DELETE FROM book WHERE id = \'${req.body.delete_id}\'`;
-  client.query(deleteQr, function(err, results) {
-    if (err) throw err;
-    console.log("Deleted row");
-    res.redirect("/personalPage");
-  });
+    // DELETE FROM table_name WHERE [condition];
+    var deleteQr = `DELETE FROM book WHERE id = \'${req.body.delete_id}\'`;
+    client.query(deleteQr, function(err, results) {
+        if (err) throw err;
+        console.log("Deleted row");
+        res.redirect("/personalPage");
+    });
 });
 
 // edit image
 router.post("/editImage", upload.single("edit_photo"), (req, res) => {
-  var editImg = `UPDATE book SET image = \'${req.file.filename}\' WHERE id = \'${req.body.image_id}\'`;
-  client.query(editImg, function(err, results) {
-    if (err) throw err;
-    console.log("Image Edited");
-    res.redirect("/personalPage");
-  });
+    var editImg = `UPDATE book SET image = \'${req.file.filename}\' WHERE id = \'${req.body.image_id}\'`;
+    client.query(editImg, function(err, results) {
+        if (err) throw err;
+        console.log("Image Edited");
+        res.redirect("/personalPage");
+    });
 });
 
 //Tìm kiếm
 router.get("/find", function(req, res) {
     var getAllBookStr = `SELECT * from book where name like '%${req.query.typeahead}%'`;
     client.query(getAllBookStr, function(err, results) {
-      if (err) throw err;
-      res.render("index", { products: results.rows });
+        if (err) throw err;
+        res.render("index", { products: results.rows });
     });
-  });
+});
 
-  function createPublicFileURL(storageName) {
+function createPublicFileURL(storageName) {
     return `http://storage.googleapis.com/${bucketName}/${encodeURIComponent(storageName)}`;
 
 }
-  
+
 module.exports = router;

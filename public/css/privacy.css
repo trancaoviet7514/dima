@@ -1,0 +1,390 @@
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        /* background-color: #f1f3f4; */
+        /* display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0; */
+        font-family: 'Roboto', sans-serif;
+        /* background: url(../image/background4.jpg) no-repeat center center fixed; */
+        /* background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+    }
+    
+    .top-nav-bar {
+        height: 57px;
+        top: 0;
+        position: sticky;
+        background: #ffffff;
+        border-bottom: 3px solid #4d94ff;
+        z-index: 2;
+    }
+    
+    .logo {
+        height: 50px;
+        width: 120px;
+        margin-left: 20px;
+        margin-top: 3px;
+    }
+    
+    .form-control {
+        margin-top: 9px;
+        margin-left: 30px;
+        border: 1px solid #4d94ff !important;
+        border-top-left-radius: 20px !important;
+        border-bottom-left-radius: 20px !important;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        box-shadow: none !important;
+    }
+    
+    .input-group-text {
+        background: #4d94ff !important;
+        border: 1px solid #4d94ff !important;
+        margin: 8.5px 10px 3px 0 !important;
+        border-top-left-radius: 0px !important;
+        border-bottom-left-radius: 0px !important;
+        border-top-right-radius: 20px !important;
+        border-bottom-right-radius: 20px !important;
+        cursor: pointer;
+    }
+    
+    .search-box {
+        display: inline-flex;
+        width: 60%;
+        height: 50px;
+    }
+    
+    .fa-search {
+        color: #ffffff;
+    }
+    
+    .menu-bar {
+        width: 40%;
+        height: 40px;
+        float: right;
+    }
+    
+    .menu-bar ul {
+        display: inline-flex;
+        float: right;
+    }
+    
+    .menu-bar ul li {
+        border-left: 1px solid #ffffff;
+        list-style-type: none;
+        padding: 15px 35px;
+        text-align: center;
+        background-color: #4d94ff;
+        cursor: pointer;
+    }
+    
+    .menu-bar ul li a {
+        font-size: 16px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+    
+    .fa-shopping-basket {
+        margin-right: 5px;
+    }
+    
+    @media only screen and (max-width: 1115px) {
+        .top-nav-bar {
+            height: 118px;
+            border-bottom: 0;
+        }
+        .search-box {
+            width: 100%;
+            margin-right: 5px;
+        }
+        .menu-bar {
+            width: 100%;
+        }
+        .menu-bar ul {
+            margin: 10px 0;
+            width: 100%;
+        }
+        .menu-bar ul li {
+            padding: 10px 10px;
+            width: 100%;
+        }
+    }
+    
+    #menu-btn,
+    #close-btn {
+        font-size: 30px;
+        margin: 10px;
+        color: #4d94ff;
+        display: none;
+    }
+    /* Side Menu */
+    
+    .side-menu {
+        height: 79%;
+        width: 15%;
+        font-size: 14px;
+        float: left;
+        z-index: 2;
+        background-color: #dddddd;
+    }
+    
+    .side-menu ul {
+        margin-left: 10px;
+    }
+    
+    .side-menu ul li {
+        list-style-type: none;
+        font-weight: bold;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    
+    .side-menu ul li:hover {
+        color: #286eb4;
+    }
+    
+    .side-menu ul li ul {
+        display: none;
+        z-index: 10;
+        top: 77px;
+    }
+    
+    .side-menu ul li:hover ul {
+        display: block;
+        height: 400px;
+        margin-left: 14%;
+        padding: 0 100px 10px 10px;
+        position: fixed;
+        background: #ececec;
+        box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.5);
+    }
+    
+    .fa-angle-right {
+        margin-top: 4px;
+        margin-right: 8px;
+        float: right;
+    }
+    
+    @media only screen and (max-width: 980px) {
+        .side-menu {
+            width: 25%;
+            z-index: 20;
+            top: 133px;
+            position: fixed;
+            font-size: 12px;
+            height: 108.4px;
+            display: none;
+        }
+        .side-menu ul li ul {
+            top: 133px;
+        }
+        .side-menu ul li:hover ul {
+            margin-left: 24%;
+        }
+        #menu-btn,
+        #close-btn {
+            padding-top: 5px;
+        }
+        /* #menu-btn{
+        display: block;
+    } */
+    }
+    /* Slider */
+    
+    .slider {
+        width: 85%;
+        margin-left: 15%;
+        padding: 0 10px;
+    }
+    
+    .carousel {
+        box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.5);
+    }
+    
+    .carousel-indicators {
+        z-index: 1 !important;
+    }
+    
+    @media only screen and (max-width: 980px) {
+        .slider {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+    /*design on mobile*/
+    
+    body {
+        margin: 0;
+    }
+    
+    ul.sidenav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 20%;
+        background-color: #f1f1f1;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+    }
+    
+    ul.sidenav li a {
+        display: block;
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+    
+    ul.sidenav li a.active {
+        background-color: rgb(47, 67, 247);
+        color: white;
+    }
+    
+    ul.sidenav li a:hover:not(.active) {
+        background-color: #555;
+        color: white;
+    }
+    
+    div.contentt {
+        margin-left: 25%;
+        margin-right: 8%;
+        padding: 1px 16px;
+    }
+    
+    @media screen and (max-width: 900px) {
+        ul.sidenav {
+            width: 100%;
+            height: auto;
+            position: relative;
+        }
+        ul.sidenav li a {
+            float: left;
+            padding: 15px;
+        }
+        div.content {
+            margin-left: 0;
+        }
+    }
+    
+    .footer {
+        background: #ffffff;
+        color: #000000;
+        margin-top: auto;
+        padding-top: 20px;
+        margin-left: 20%;
+    }
+    
+    .footer .links ul {
+        list-style-type: none;
+    }
+    
+    .footer .links ul li a {
+        color: #000000;
+        transition: color .2s;
+    }
+    
+    .footer .links ul li a:hover {
+        text-decoration: none;
+        color: #4180CB;
+    }
+    
+    .about-company i {
+        font-size: 25px;
+    }
+    
+    .about-company a {
+        columns: #000000;
+        transition: color .2s;
+    }
+    
+    .about-company a:hover {
+        color: #4180CB;
+    }
+    
+    .location p {
+        margin-bottom: 5px;
+    }
+    
+    .copyright p {
+        border-top: 1px solid #afafaf;
+        text-align: center;
+    }
+    
+    .zalo-icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+    }
+    
+    .fa-envelope-o {
+        font-size: 19px;
+        margin-right: 10px;
+    }
+    
+    .fa-facebook-square {
+        margin-right: 15px;
+        font-size: 20px;
+    }
+    
+    .fa-map-marker {
+        margin-right: 10px;
+        font-size: 23px;
+        color: red;
+    }
+    
+    .fa-phone {
+        font-size: 20px;
+        margin: 5px;
+    }
+    
+    @media only screen and (max-width: 1024px) {
+        .links {
+            margin-top: 30px;
+        }
+        .location {
+            margin-top: 30px;
+        }
+    }
+    
+    @media screen and (max-width: 900px) {
+        ul.sidenav li a {
+            text-align: left;
+            float: none;
+        }
+        div.contentt {
+            margin-left: 5%;
+            margin-right: 8%;
+            padding: 1px 16px;
+        }
+        .footer {
+            background: #ffffff;
+            color: #000000;
+            margin-top: auto;
+            padding-top: 20px;
+            margin: 0%;
+            margin-right: 0px;
+        }
+    }
+    
+    .logo01 {
+        height: 40px;
+        width: 60px;
+        margin-left: 20px
+    }
+    
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+        .logo01 {
+            height: 30px;
+            width: 40px;
+            margin-left: 10px
+        }
+    }
