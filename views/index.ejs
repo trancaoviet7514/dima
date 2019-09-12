@@ -25,7 +25,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('input.typeahead').typeahead({
-            name: 'countries',
+            name: 'typeahead',
             remote: 'http://localhost:3000/search?key=%QUERY',
             limit: 10
         });
@@ -153,34 +153,36 @@
                 <% products.forEach(function(product) { %>
                 <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="box">
-                        <div class="product-top">
-                            <%var str = `${product.image}` %>
-                            <img src="<%= str%>" alt="" class="img-responsive">
-
-                            <!-- nút bấm bên phải hình -->
-
-                            <!-- <div class="overlay-right">
-                                                  <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                                      <i class="fa fa-eye" aria-hidden="true"></i>
-                                                  </button>
-                                                  <button type="button" class="btn btn-secondary" title="Add to Wishlist">
-                                                      <i class="fa fa-heart" aria-hidden="true"></i>
-                                                  </button>
-                                                  <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                  </button>
-                                              </div> -->
-                        </div>
-                        <div class="product-bottom">
-                            <!-- <i class="fa fa-star" aria-hidden="true"></i>
-                                              <i class="fa fa-star" aria-hidden="true"></i>
-                                              <i class="fa fa-star" aria-hidden="true"></i>
-                                              <i class="fa fa-star" aria-hidden="true"></i>
-                                              <i class="fa fa-star-half-o" aria-hidden="true"></i> -->
-                            <h3><%= product.name%></h3>
-                            <h5 class="x">Giá: <%= product.price%> VNĐ</h5>
-                            <h5 class="y">Liên hệ: <%= product.phone%></h5>
-                        </div>
+                        <a href="/product/<%= product.id%>">
+                            <div class="product-top">
+                                <%var str = `${product.image}` %>
+                                <img src="<%= str%>" alt="" class="img-responsive">
+    
+                                <!-- nút bấm bên phải hình -->
+    
+                                <!-- <div class="overlay-right">
+                                                        <button type="button" class="btn btn-secondary" title="Quick Shop">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-secondary" title="Add to Wishlist">
+                                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-secondary" title="Add to Cart">
+                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div> -->
+                            </div>
+                            <div class="product-bottom">
+                                <!-- <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-half-o" aria-hidden="true"></i> -->
+                                <h3><%= product.name%></h3>
+                                <h5 class="x">Giá: <%= product.price%> VNĐ</h5>
+                                <h5 class="y">Liên hệ: <%= product.phone%></h5>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <% }); %>
