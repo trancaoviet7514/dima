@@ -144,6 +144,34 @@ router.get("/product/*", (req, res) => {
   });
 });
 
+
+//tag
+var tag;
+router.get("/tag/*", (req, res) => {
+  var temp = req.path.split('/')[2];
+  var filter;
+  if(temp == "books"){
+    var filter = `select * from book where tag = 'Sách'`;
+  }
+  else if(temp == "news"){
+    var filter = `select * from book`;
+  }
+  else if(temp == "belongings"){
+    var filter = `select * from book where tag = 'Đồ dùng'`;
+  }
+  else if(temp == "clothes"){
+    var filter = `select * from book where tag = 'Quần áo'`;
+  }
+  else if(temp == "others"){
+    var filter = `select * from book where tag = 'Khác'`;
+  }
+
+  client.query(filter, function(err, results) {
+    if (err) throw err;
+    res.render("tag", { products: results.rows });
+  });
+});
+
 //Tìm kiếm
 router.get("/find", function(req, res) {
   var getAllBookStr = `SELECT * from book where name like '%${req.query.typeahead}%'`;
