@@ -92,6 +92,7 @@
                         <th>Giá</th>
                         <th>Số điện thoại</th>
                         <th>Ảnh</th>
+                        <th>Tag</th>
                         <th>Thao tác</th>
                     </tr>
                 </thead>
@@ -104,8 +105,9 @@
                         <td><%= product.name%></td>
                         <td><%= product.price%></td>
                         <td><%= product.phone%></td>
-                        <%var str = `./image/${product.image}` %>
+                        <%var str = `${product.image}` %>
                         <td><img class="image" src="<%= str%>" alt="" title="Sửa ảnh" onclick="document.getElementById('id04').style.display='block'"></td>
+                        <td><%= product.tag%></td>
                         <td>
                             <a class="editbtn manipulation" id="edit-icon"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Sửa thông tin"></i></a>
                             <a class="deletebtn manipulation"  id="delete-icon"><i class="fa fa-trash-o" aria-hidden="true" title="Xóa sản phẩm"></i></a>
@@ -116,6 +118,7 @@
                     <tr>
                         <td></td>
                         <td style="display: none"></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -153,6 +156,13 @@
             <input type="file" accept="image/*" name="photo" required="" id="imageUpload" style="display: none"
                 oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
 
+            <select name="tag" id="tag" class="select">
+                <option value="Sách">Sách</option>
+                <option value="Đồ dùng">Đồ dùng</option>
+                <option value="Quần áo">Quần áo</option>
+                <option value="Khác">Khác</option>
+            </select>
+            
             <button id="upload" type="submit" class="btn">Đăng</button>
         </form>
     </div>
@@ -181,6 +191,13 @@
                 oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')"> -->
 
             <input type="text" name="edit_id" class="edit_id" style="display: none">
+
+            <select name="edit_tag" id="edit_tag" class="select">
+                <option value="Sách">Sách</option>
+                <option value="Đồ dùng">Đồ dùng</option>
+                <option value="Quần áo">Quần áo</option>
+                <option value="Khác">Khác</option>
+            </select>
 
             <button id="edit" type="submit" class="btn">Hoàn tất</button>
         </form>
@@ -411,6 +428,20 @@
             else if (i == 5) {
                 var temp = getFilename(item.innerHTML);
                 $('.edit_file').text(temp);
+            }
+            else if(i==6){
+                if(item.innerHTML == "Sách"){
+                    $("#edit_tag").val("Sách");
+                }
+                else if(item.innerHTML == "Đồ dùng"){
+                    $("#edit_tag").val("Đồ dùng");
+                }
+                else if(item.innerHTML == "Khác"){
+                    $("#edit_tag").val("Khác");
+                }
+                else if(item.innerHTML == "Quần áo"){
+                    $("#edit_tag").val("Quần áo");
+                }
             }
         });
     });
