@@ -1,35 +1,36 @@
 const express = require("express");
 const router = express.Router();
-const multer = require('multer');
-const upload = multer({dest: __dirname + '/public/image'});
-const mime = require('mime')
+const multer = require("multer");
+const upload = multer({ dest: __dirname + "/public/image" });
+const mime = require("mime");
 
 const { Client } = require("pg");
 const client = new Client({
-  user: 'yujeunvafgnwbm',
-  host: 'ec2-23-21-186-85.compute-1.amazonaws.com',
-  database: 'd65ufhdinrm8ir',
-  password: '540742461b897e1d6e2d342f4cd4e6b055c7abf55db717767ba87aa89968ee2a',
+  user: "yujeunvafgnwbm",
+  host: "ec2-23-21-186-85.compute-1.amazonaws.com",
+  database: "d65ufhdinrm8ir",
+  password: "540742461b897e1d6e2d342f4cd4e6b055c7abf55db717767ba87aa89968ee2a",
   port: 5432,
   ssl: true
-})
+});
 
-const keyFilename="./dima-fc345-firebase-adminsdk-a1u59-35ff50d6c5.json"; //replace this with api key file
-const projectId = "dima-fc345" //replace with your project id
+const keyFilename = "./dima-fc345-firebase-adminsdk-a1u59-35ff50d6c5.json"; //replace this with api key file
+const projectId = "dima-fc345"; //replace with your project id
 const bucketName = `${projectId}.appspot.com`;
 
-const {Storage} = require('@google-cloud/storage')
+const { Storage } = require("@google-cloud/storage");
 
 const gcs = new Storage({
-    projectId,
-    keyFilename
+  projectId,
+  keyFilename
 });
 
 const bucket = gcs.bucket(bucketName);
 
-client.connect()
-router.get('/', function (req, res) {    
-  var getAllBookStr = 'select * from book'
+client.connect();
+
+router.get("/", function(req, res) {
+  var getAllBookStr = "select * from book";
   client.query(getAllBookStr, function(err, results) {
     if (err) throw err;
     res.render("index", { products: results.rows });
@@ -48,29 +49,34 @@ router.get("/upload", function(req, res) {
   });
 });
 
+router.get("/product", function(req, res) {
+  res.render("product");
+});
+
 router.get("/personalPage", function(req, res) {
   var getAllBookStr = "select * from book";
   client.query(getAllBookStr, function(err, results) {
     if (err) throw err;
     res.render("personalPage", { products: results.rows });
   });
-})
+});
 
-router.post('/upload', upload.single('photo'), (req, res) => {
-  
+router.post("/upload", upload.single("photo"), (req, res) => {
   const filePath = `./public/image/${req.file.filename}`;
   const uploadTo = `image/${req.file.filename}`;
   const fileMime = mime.lookup(filePath);
 
-  bucket.upload(filePath,{
-      destination:uploadTo,
-      public:true,
-      metadata: {contentType: fileMime,cacheControl: "public, max-age=300"}
-  }, function(err, file) {
-      if(err)
-      {
-          console.log(err);
-          return;
+  bucket.upload(
+    filePath,
+    {
+      destination: uploadTo,
+      public: true,
+      metadata: { contentType: fileMime, cacheControl: "public, max-age=300" }
+    },
+    function(err, file) {
+      if (err) {
+        console.log(err);
+        return;
       }
       var insertStr = `INSERT into book(name, price, image, phone, tag) 
                   values(\'${req.body.name}\',
@@ -79,14 +85,14 @@ router.post('/upload', upload.single('photo'), (req, res) => {
                   \'${req.body.phone}\',
                   \'${req.body.tag}')`
       client.query(insertStr, function(err, results) {
-          if (err) throw err;
-          console.log("Insert a record!");
+        if (err) throw err;
+        console.log("Insert a record!");
       });
-      if(req.file) {        
-          res.redirect('/')
-      }
-      else throw 'error';
-      });
+      if (req.file) {
+        res.redirect("/");
+      } else throw "error";
+    }
+  );
 });
 
 // edit
@@ -120,18 +126,37 @@ router.post("/editImage", upload.single("edit_photo"), (req, res) => {
   });
 });
 
+//product
+var id;
+router.get("/product/*", (req, res) => {
+  var temp = req.path.split('/')[2];
+  if(Number.isNaN(Number(temp))==true){
+    
+  }
+  else{
+    id = temp;
+  }
+
+  var getProduct = `select * from book where id = ${id}`;
+  client.query(getProduct, function(err, results) {
+    if (err) throw err;
+    res.render("product", { products: results.rows });
+  });
+});
+
 //Tìm kiếm
 router.get("/find", function(req, res) {
-    var getAllBookStr = `SELECT * from book where name like '%${req.query.typeahead}%'`;
-    client.query(getAllBookStr, function(err, results) {
-      if (err) throw err;
-      res.render("index", { products: results.rows });
-    });
+  var getAllBookStr = `SELECT * from book where name like '%${req.query.typeahead}%'`;
+  client.query(getAllBookStr, function(err, results) {
+    if (err) throw err;
+    res.render("index", { products: results.rows });
   });
+});
 
-  function createPublicFileURL(storageName) {
-    return `http://storage.googleapis.com/${bucketName}/${encodeURIComponent(storageName)}`;
-
+function createPublicFileURL(storageName) {
+  return `http://storage.googleapis.com/${bucketName}/${encodeURIComponent(
+    storageName
+  )}`;
 }
-  
+
 module.exports = router;
