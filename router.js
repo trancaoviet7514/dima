@@ -72,12 +72,12 @@ router.post('/upload', upload.single('photo'), (req, res) => {
           console.log(err);
           return;
       }
-      console.log(createPublicFileURL(uploadTo));
-      var insertStr = `INSERT into book(name, price, image, phone) 
+      var insertStr = `INSERT into book(name, price, image, phone, tag) 
                   values(\'${req.body.name}\',
-                  N\'${req.body.price}\',
+                  \'${req.body.price}\',
                   \'${createPublicFileURL(uploadTo)}\',
-                  \'${req.body.phone}\')`
+                  \'${req.body.phone}\',
+                  \'${req.body.tag}')`
       client.query(insertStr, function(err, results) {
           if (err) throw err;
           console.log("Insert a record!");
@@ -91,7 +91,7 @@ router.post('/upload', upload.single('photo'), (req, res) => {
 
 // edit
 router.post("/edit", upload.single("edit_photo"), (req, res) => {
-  var editQur = `UPDATE book SET name = \'${req.body.edit_name}\', price = \'${req.body.edit_price}\', phone = \'${req.body.edit_phone}\' WHERE id = \'${req.body.edit_id}\'`;
+  var editQur = `UPDATE book SET name = \'${req.body.edit_name}\', price = \'${req.body.edit_price}\', phone = \'${req.body.edit_phone}\', tag = \'${req.body.edit_tag}\' WHERE id = \'${req.body.edit_id}\'`;
   client.query(editQur, function(err, results) {
     if (err) throw err;
     console.log("Edited");
