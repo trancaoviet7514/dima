@@ -89,7 +89,7 @@ router.post("/upload", upload.single("photo"), (req, res) => {
         console.log("Insert a record!");
       });
       if (req.file) {
-        res.redirect("/");
+        res.redirect("/personalPage");
       } else throw "error";
     }
   );
@@ -118,12 +118,39 @@ router.post("/delete", (req, res) => {
 
 // edit image
 router.post("/editImage", upload.single("edit_photo"), (req, res) => {
-  var editImg = `UPDATE book SET image = \'${req.file.filename}\' WHERE id = \'${req.body.image_id}\'`;
-  client.query(editImg, function(err, results) {
-    if (err) throw err;
-    console.log("Image Edited");
-    res.redirect("/personalPage");
-  });
+  // var editImg = `UPDATE book SET image = \'${req.file.filename}\' WHERE id = \'${req.body.image_id}\'`;
+  // client.query(editImg, function(err, results) {
+  //   if (err) throw err;
+  //   console.log("Image Edited");
+  //   res.redirect("/personalPage");
+  // });
+  const filePath = `./public/image/${req.file.filename}`;
+  const uploadTo = `image/${req.file.filename}`;
+  const fileMime = mime.lookup(filePath);
+
+  bucket.upload(
+    filePath,
+    {
+      destination: uploadTo,
+      public: true,
+      metadata: { contentType: fileMime, cacheControl: "public, max-age=300" }
+    },
+    function(err, file) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      var insertStr = `UPDATE book SET image = \'${createPublicFileURL(uploadTo)}\' 
+                        WHERE id = \'${req.body.image_id}\'`;
+      client.query(insertStr, function(err, results) {
+        if (err) throw err;
+        console.log("Edited image");
+      });
+      if (req.file) {
+        res.redirect('personalPage');
+      } else throw "error";
+    }
+  );
 });
 
 //product
@@ -149,7 +176,6 @@ router.get("/product/*", (req, res) => {
 var tag;
 router.get("/tag/*", (req, res) => {
   var temp = req.path.split('/')[2];
-  var filter;
   if(temp == "books"){
     var filter = `select * from book where tag = 'Sách'`;
   }
