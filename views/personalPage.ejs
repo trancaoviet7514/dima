@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <%var products %>
-<% var error; %>
 
 <head>
     <meta charset="UTF-8">
@@ -23,7 +21,19 @@
     <link rel="stylesheet" href="css/editDialog.css">
     <link rel="stylesheet" href="css/deleteDialog.css">
 </head>
-
+<script>
+    window.onload = function () {
+        var notify = location.search.toString().split('?')[1]
+        if(notify == 'done'){
+            alert("Đăng sách thành công!");
+            window.location.href = "personalPage";
+        }
+        else if(notify == 'fail'){
+            alert("Đăng sách thất bại!");
+            window.location.href = "personalPage";
+        }
+    };
+</script>
 <body>
     <div class="top-nav-bar">
         <div class="search-box">
@@ -42,45 +52,6 @@
         </div>
     </div>
 
-    <!-- <table class="center">
-        <thead class="thead-dark">
-            <tr>
-                <th class="first" scope="col">Stt</th>
-                <th class="second" scope="col">Tên</th>
-                <th class="second" scope="col">Giá</th>
-                <th class="second" scope="col">Số điện thoại</th>
-                <th class="image" scope="col">Ảnh</th>
-                <th class="final" scope="col">Thao tác</th>
-            </tr>
-        </thead>
-        <tbody class="allrow">
-            <% if(products != null) { %>
-            <% products.forEach(function(product) { %>
-            <tr>
-                <td class="first"><%= product.id%></td>
-                <td><%= product.name%></td>
-                <td><%= product.price%></td> 
-                <td><%= product.phone%></td>
-                <td><%= product.image%></td>
-                <td>
-                    <a class="editbtn"><i
-                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    <a class="deletebtn"><i class="fa fa-trash-o"
-                            aria-hidden="true"></i></a>
-                </td>
-            </tr>
-            <% }); %>
-            <%}%>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="add" onclick="document.getElementById('id01').style.display='block'">Thêm SP</td>
-            </tr>
-        </tbody>
-    </table> -->
     <section class="mySection">
         <div>
             <table>
@@ -184,11 +155,6 @@
                 oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại liên hệ')"
                 oninput="setCustomValidity('')" onkeyup="return displayWordCounter();"
                 onkeypress="return isNumberKey(event)">
-
-            <!-- <label for="edit_file_id" class="btn btn-primary btn-block chooseFile edit_file" name="edit_file" id="Label2" style="overflow: hidden">Nhấp vào đây để chọn
-                ảnh</label>
-            <input type="file" accept="image/*" name="edit_photo" class="edit_photo" required="" id="edit_file_id" style="display: none"
-                oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')"> -->
 
             <input type="text" name="edit_id" class="edit_id" style="display: none">
 
@@ -519,7 +485,7 @@
         }
     }
 
-    // ID
+    // Set ID
     $(document).ready(function () {
         var id = 0;
         $("tr").each(function(){

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <%var products %>
-<% var error; %>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +19,7 @@
 
 <body>
   <div class="top-nav-bar">
-    <a href=""><img src="1.jpg" alt="" class="logo" style="width: 10px; height: 10px"></a>
+    <a href="/"><img src="../../image/icon2.png" alt="" class="logo" style="width: 10px; height: 10px"></a>
     <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
       <div class="search-box">
         <!-- <i class="fa fa-bars" id="menu-btn" onclick="openmenu()" aria-hidden="true"></i>
@@ -36,8 +34,6 @@
 
     <div class="menu-bar">
       <ul>
-        <!-- <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                    Cart</a></li>  -->
         <li><a href="/login">Đăng nhập</a></li>
         <li><a href="/signup">Đăng ký</a></li>
         <li><a href="/upload">Đăng sách</a></li>
@@ -75,10 +71,6 @@
               </a>
             </div>
           </div>
-          <!-- <div class="slider">
-                            <%var str = `${products[0].image}` %>
-                            <img src="<%= str%>" alt="" class="img-responsive">
-                    </div> -->
         </div>
         <div class="col-md-7">
           <h2 class="name"><%= products[0].name%></h2>

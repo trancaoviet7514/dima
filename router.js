@@ -39,7 +39,7 @@ router.get("/", function(req, res) {
 
 router.get("/upload", function(req, res) {
   res.render("upload");
-
+});
   router.get("/login", function(req, res) {
     res.render("login");
   });
@@ -47,7 +47,6 @@ router.get("/upload", function(req, res) {
   router.get("/signup", function(req, res) {
     res.render("signup");
   });
-});
 
 router.get("/product", function(req, res) {
   res.render("product");
@@ -85,12 +84,17 @@ router.post("/upload", upload.single("photo"), (req, res) => {
                   \'${req.body.phone}\',
                   \'${req.body.tag}')`
       client.query(insertStr, function(err, results) {
-        if (err) throw err;
-        console.log("Insert a record!");
+        if (err) {
+          res.redirect('/personalPage?fail');
+          throw err;
+        }  
+          console.log("Insert a record!");
       });
       if (req.file) {
-        res.redirect("/");
-      } else throw "error";
+        res.redirect('/personalPage?done');
+      } else{
+        res.redirect('/personalPage?fail');
+      } 
     }
   );
 });
