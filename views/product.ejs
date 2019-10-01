@@ -24,8 +24,6 @@
     <a href=""><img src="1.jpg" alt="" class="logo" style="width: 10px; height: 10px"></a>
     <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
       <div class="search-box">
-        <!-- <i class="fa fa-bars" id="menu-btn" onclick="openmenu()" aria-hidden="true"></i>
-                <i class="fa fa-times" id="close-btn" onclick="closemenu()" aria-hidden="true"></i> -->
         <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false"
           class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
         <button type="submit" class="searchButton">
@@ -36,8 +34,6 @@
 
     <div class="menu-bar">
       <ul>
-        <!-- <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                    Cart</a></li>  -->
         <li><a href="/login">Đăng nhập</a></li>
         <li><a href="/signup">Đăng ký</a></li>
         <li><a href="/upload">Đăng sách</a></li>
@@ -75,10 +71,6 @@
               </a>
             </div>
           </div>
-          <!-- <div class="slider">
-                            <%var str = `${products[0].image}` %>
-                            <img src="<%= str%>" alt="" class="img-responsive">
-                    </div> -->
         </div>
         <div class="col-md-7">
           <h2 class="name"><%= products[0].name%></h2>
@@ -90,32 +82,35 @@
   </section>
   <!-- footer -->
   <div class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-xs-12 about-company">
-            <h4>Giới thiệu</h4>
-            <p class="pr-5 text-black-50">Tổ chức của chúng tôi là một tổ chức phi lợi nhuận. Mục đích của sản phẩm là dùng để chia sẻ những vật dụng không còn nhu cầu sử dụng, ví dụ như sách vở.</p>
-          </div>
-          <div class="col-lg-3 col-xs-12 links">
-            <h4 class="mt-lg-0 mt-sm-3">Tham khảo</h4>
-              <ul class="m-0 p-0">
-                <li>- <a href="#">Chính sách bảo mật</a></li>
-                <li>- <a href="#">Tuyển dụng</a></li>
-              </ul>
-          </div>
-          <div class="col-lg-4 col-xs-12 location">
-            <h4 class="mt-lg-0 mt-sm-4">Liên hệ</h4>
-            <p><i class="fa fa-map-marker" aria-hidden="true"></i>135B Trần Hưng Đạo, Cầu Ông Lãnh, Quận 1, TP Hồ Chí Minh</p>
-            <p><img class="zalo-icon" src="image/zaloicon.png" alt=""> 0934 773 909</p>
-            <p><i class="fa fa-envelope-o mr-3"></i>trancaoviet7514@gmail.com</p>
-            <a href="https://www.facebook.com/trancaoviet"><i class="fa fa-facebook-square"></i>https://www.facebook.com/trancaoviet</a>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-xs-12 about-company">
+          <h4>Giới thiệu</h4>
+          <p class="pr-5 text-black-50">Tổ chức của chúng tôi là một tổ chức phi lợi nhuận. Mục đích của sản phẩm là
+            dùng để chia sẻ những vật dụng không còn nhu cầu sử dụng, ví dụ như sách vở.</p>
         </div>
-        <div class="row mt-5">
-          <div class="col copyright">
-            <p class=""><small class="text-black-50">© 2019. Phiên bản 1.0.0. Được phát triển bởi ___team.</small></p>
-          </div>
+        <div class="col-lg-3 col-xs-12 links">
+          <h4 class="mt-lg-0 mt-sm-3">Tham khảo</h4>
+          <ul class="m-0 p-0">
+            <li>- <a href="#">Chính sách bảo mật</a></li>
+            <li>- <a href="#">Tuyển dụng</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-xs-12 location">
+          <h4 class="mt-lg-0 mt-sm-4">Liên hệ</h4>
+          <p><i class="fa fa-map-marker" aria-hidden="true"></i>135B Trần Hưng Đạo, Cầu Ông Lãnh, Quận 1, TP Hồ Chí Minh
+          </p>
+          <p><img class="zalo-icon" src="image/zaloicon.png" alt=""> 0934 773 909</p>
+          <p><i class="fa fa-envelope-o mr-3"></i>trancaoviet7514@gmail.com</p>
+          <a href="https://www.facebook.com/trancaoviet"><i
+              class="fa fa-facebook-square"></i>https://www.facebook.com/trancaoviet</a>
         </div>
       </div>
+      <div class="row mt-5">
+        <div class="col copyright">
+          <p class=""><small class="text-black-50">© 2019. Phiên bản 1.0.0. Được phát triển bởi ___team.</small></p>
+        </div>
       </div>
+    </div>
+  </div>
 </body>

@@ -1,5 +1,3 @@
-<% var weather; %>
-<% var error; %>
 <!DOCTYPE html>
 <html lang="en">
 <%var products %>
@@ -28,26 +26,13 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="typeahead.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('input.typeahead').typeahead({
-            name: 'typeahead',
-            remote: 'http://localhost:3000/search?key=%QUERY',
-            limit: 10
-        });
-    });
-</script>
-
 <body>
     <div class="top-nav-bar">
         <div class="container">
-            <a href="http://localhost:3000" style="text-decoration: none"><img src="image/icon.png" alt="" class="logo"><span class="logoContent">Dima</span></a>
+            <a href="http://localhost:3000" style="text-decoration: none"><img src="image/icon.png" alt=""
+                    class="logo"><span class="logoContent">Dima</span></a>
             <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
                 <div class="search-box">
-                    <!-- <i class="fa fa-bars" id="menu-btn" onclick="openmenu()" aria-hidden="true"></i>
-                        <i class="fa fa-times" id="close-btn" onclick="closemenu()" aria-hidden="true"></i> -->
                     <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false"
                         class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
                     <button type="submit" class="searchButton">
@@ -66,12 +51,13 @@
 
             <!-- dropdown menu -->
             <div class="dropdown">
-                    <button class="dropbtn"><span class="dropbtn-content" style="color: #ffffff">ĐĂNG NHẬP  </span><i class="fa fa-caret-down" aria-hidden="true"></i></button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="/login">Đăng nhập</a>
-                        <a href="/signup">Đăng ký</a>
-                        <a href="/upload">Đăng sách</a>
-                    </div>
+                <button class="dropbtn"><span class="dropbtn-content" style="color: #ffffff">ĐĂNG NHẬP </span><i
+                        class="fa fa-caret-down" aria-hidden="true"></i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/login">Đăng nhập</a>
+                    <a href="/signup">Đăng ký</a>
+                    <a href="/upload">Đăng sách</a>
+                </div>
             </div>
         </div>
     </div>
@@ -141,20 +127,6 @@
                             <div class="product-top">
                                 <%var str = `${product.image}` %>
                                 <img src="<%= str%>" alt="" class="img-responsive">
-
-                                <!-- nút bấm bên phải hình -->
-
-                                <!-- <div class="overlay-right">
-                                                        <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary" title="Add to Wishlist">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div> -->
                             </div>
                             <div class="product-bottom">
                                 <h3><%= product.name%></h3>
@@ -169,59 +141,8 @@
             </div>
         </div>
     </section>
-    <!-- Website features
-                <section class="website-features">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3 feature-box">
-                                <img src="image/1a.png" alt="">
-                                <div class="feature-text">
-                                    <p><b>100% Original items</b> are available at company.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 feature-box">
-                                <img src="image/1b.png" alt="">
-                                <div class="feature-text">
-                                    <p><b>Return within 30 days</b> of recieving your order.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 feature-box">
-                                <img src="image/1c.png" alt="">
-                                <div class="feature-text">
-                                    <p><b>Get free delivery for every</b> are available at company</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 feature-box">
-                                <img src="image/1d.png" alt="">
-                                <div class="feature-text">
-                                    <p><b>100% Original items</b> are available at company</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section> -->
 
-    <!-- footer  -->
-    <!-- <section class="footer">
-        <div class="container text-center text-md-left">
-            <div class="row">
-                <div class="col-md-3">
-                    <h3>Useful Links</h3>
-                    <p>Useful Links</p>
-                    <p>Useful Links</p>
-                    <p>Useful Links</p>
-                </div>
-                <div class="col-md-3">
-                    <h3>Useful Links</h3>
-                    <p>Useful Links</p>
-                    <p>Useful Links</p>
-                    <p>Useful Links</p>
-                </div>
-            </div>
-            <hr>
-        </div>
-        Phiên bản 1.0.0 - Được phát triển bởi 70x team - 2019
-    </section> -->
+    <!-- footer -->
     <div class="footer">
         <div class="container">
           <div class="row">
@@ -252,52 +173,9 @@
         </div>
         </div>
     <!-- Footer -->
-    <!-- Nút menu -->
-    <!-- <script>
-        function openmenu() {
-            document.getElementById("side-menu").style.display = "block";
-            document.getElementById("menu-btn").style.display = "none";
-            document.getElementById("close-btn").style.display = "block";
-        }
-        function closemenu() {
-            document.getElementById("side-menu").style.display = "none";
-            document.getElementById("menu-btn").style.display = "block";
-            document.getElementById("close-btn").style.display = "none";
-        }
-    </script> -->
 </body>
 
-<script>
-    // var createCallBack = function () { //First function
-    //     // var y = document.getElementById("x").textContent;
-    //     // console.log(y);
-    //     // var array = document.querySelectorAll("h5");
-    //     var array = document.getElementsByClassName("x");
-    //     for (var i = 0; i < array.length; i++) {
-    //         array[i].innerHTML = formatCurrency(array[i].textContent);
-    //     }
-    // }
-
-    // function formatCurrency(num) {
-    //     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-    // }
-
-    // var createCallBack2 = function () { //First function
-    //     // var y = document.getElementById("x").textContent;
-    //     // console.log(y);
-    //     // var array = document.querySelectorAll("h5");
-    //     var array = document.getElementsByClassName("y");
-    //     for (var i = 0; i < array.length; i++) {
-    //         array[i].innerHTML = formatPhoneNumber(array[i].textContent);
-    //     }
-    // }
-
-    // function formatPhoneNumber(num) {
-    //     text = num.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
-    //     return text;
-    // }
-
-    // window.onload = function () { createCallBack(); createCallBack2()}; // caller 7
-</script>
+<!-- javascript -->
+<script type="text/javascript" src="JS/index.js"></script>
 
 </html>

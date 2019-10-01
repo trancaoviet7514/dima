@@ -28,26 +28,12 @@
     <link rel="stylesheet" href="../../css/main.css">
 </head>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="typeahead.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('input.typeahead').typeahead({
-            name: 'typeahead',
-            remote: 'http://localhost:3000/search?key=%QUERY',
-            limit: 10
-        });
-    });
-</script>
-
 <body>
     <div class="top-nav-bar">
         <div class="container">
             <a href="http://localhost:3000" style="text-decoration: none"><img src="../../image/icon.png" alt="" class="logo"><span class="logoContent">Dima</span></a>
             <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
                 <div class="search-box">
-                    <!-- <i class="fa fa-bars" id="menu-btn" onclick="openmenu()" aria-hidden="true"></i>
-                        <i class="fa fa-times" id="close-btn" onclick="closemenu()" aria-hidden="true"></i> -->
                     <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false"
                         class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
                     <button type="submit" class="searchButton">
@@ -155,28 +141,7 @@
         </div>
 </body>
 
-<script>
-    window.onload = function(){
-        var url = window.location.href;
-        var parameter = url.split('/');
-        var key = parameter[parameter.length - 1];
-        
-        if(key == 'news'){
-            document.getElementById('news').style.backgroundColor = "#c5c5c5";
-        }
-        else if(key == 'books'){
-            document.getElementById('books').style.backgroundColor = "#c5c5c5";
-        }
-        else if(key == 'belongings'){
-            document.getElementById('belongings').style.backgroundColor = "#c5c5c5";
-        }
-        else if(key == 'clothes'){
-            document.getElementById('clothes').style.backgroundColor = "#c5c5c5";
-        }
-        else if(key == 'others'){
-            document.getElementById('others').style.backgroundColor = "#c5c5c5";
-        }
-    }
-</script>
+<!-- javascript -->
+<script type="text/javascript" src="../../JS/tagPage.js"></script>
 
 </html>
