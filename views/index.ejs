@@ -33,6 +33,27 @@
 </script>
 
 <body>
+        <button onclick="getLocation()">ZALO Test geolocation permission</button>
+
+        <p id="demo"></p>
+        
+        <script>
+        var x = document.getElementById("demo");
+        
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+        }
+        
+        function showPosition(position) {
+          x.innerHTML = "Latitude: " + position.coords.latitude + 
+          "<br>Longitude: " + position.coords.longitude;
+        }
+        </script>
+        
     <div class="zalo-chat-widget" data-oaid="1832450568844210993" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="5" data-width="350" data-height="420"></div>
     <script src="https://sp.zalo.me/plugins/sdk.js"></script>
     <!-- Load Facebook SDK for JavaScript -->
