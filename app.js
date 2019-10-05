@@ -11,6 +11,8 @@ app.use('/upload', router)
 app.use('/search', router)
 app.use('/edit', router)
 app.use('/delete', router)
+app.use('/login', router)
+app.use('/signup', router)
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3000!')

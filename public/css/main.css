@@ -106,6 +106,7 @@ body{
     font-size: 25px; 
     color: #ffffff;
     margin-right: 10px;
+    margin-left: 2px;
 }
 
 .form-control{
@@ -179,109 +180,7 @@ body{
     }
 }
 
-/* @media only screen and (max-width: 1115px){
-    .search-box{
-        width: 100%;
-        margin-right: 5px;
-    }
-    .menu-bar{
-        width: 100%;
-    }
-    .menu-bar ul{
-        margin: 10px 0;
-        width: 100%;
-    }
-    .menu-bar ul li{
-        padding: 10px 10px;
-        width: 100%;
-    }
-    .form-search-box{
-        width: 70%;
-    }
-
-    .typeahead{
-        width: 100vh;
-    }
-
-} */
-
-#menu-btn, #close-btn{
-    font-size: 30px;
-    margin: 10px;
-    color: #4d94ff;
-    display: none;
-}
-
-/* Side Menu */
-.side-menu{
-    height: 79%;
-    width: 15%;
-    font-size: 14px;
-    float: left;
-    z-index: 2;
-    background-color: #dddddd;
-}
-.side-menu ul{
-    margin-left: 10px;
-}
-.side-menu ul li{
-    list-style-type: none;
-    font-weight: bold;
-    margin-top: 10px;
-    cursor: pointer;
-}
-.side-menu ul li:hover{
-    color: #286eb4;
-}
-.side-menu ul li ul{
-    display: none;
-    z-index: 10;
-    top: 77px;
-}
-.side-menu ul li:hover ul{
-    display: block;
-    height: 400px;
-    margin-left: 14%;
-    padding: 0 100px 10px 10px;
-    position: fixed;
-    background: #ececec;
-    box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.5);
-}
-.fa-angle-right{
-    margin-top: 4px;
-    margin-right: 8px;
-    float: right;
-}
-
-.childMenu{
-    margin-top: -15px;
-}
-
 @media only screen and (max-width: 980px){
-    .side-menu{
-        width: 25%;
-        z-index: 20;
-        top: 133px;
-        position: fixed;
-        font-size: 12px;
-        height: 108.4px;
-        display: none;
-    }
-    .side-menu ul li ul{
-        top: 133px;
-    }
-    .side-menu ul li:hover ul{
-        margin-left: 24%;
-    }
-
-    #menu-btn, #close-btn{
-        padding-top: 5px;
-    }
-
-    .childMenu{
-        margin-top: 45px;
-    }
-
     .slider{
         width: 100%;
         margin-left: 0;

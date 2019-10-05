@@ -139,13 +139,6 @@ $('#edit').bind("click", function () {
     var phoneNumberVal = $('#edit_phone_id').val();
     var check = true;
 
-    // if (imgVal == '') {
-    //     document.getElementById('Label2').style.borderColor = "#ff5c33";
-    //     document.getElementById('Label2').style.backgroundColor = "#ffd6cc";
-    //     document.getElementById('Label2').innerHTML = "Bạn chưa chọn ảnh";
-    //     check = false;
-    // }
-
     if (nameVal == '') {
         document.getElementById('edit_name_id').style.backgroundColor = "#ffd6cc";
         check = false;

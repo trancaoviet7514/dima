@@ -16,6 +16,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 
+    <link href="https://fonts.googleapis.com/css?family=Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script|Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/personalPage.css">
     <link rel="stylesheet" href="css/dialogUpload.css">
     <link rel="stylesheet" href="css/editDialog.css">
@@ -23,7 +30,7 @@
 </head>
 
 <body>
-    <div class="top-nav-bar">
+    <!-- <div class="top-nav-bar">
         <div class="search-box">
             <a href="/"><img src="image/icon2.png" alt="" class="logo"></a>
             <input type="text" class="form-control">
@@ -38,7 +45,36 @@
                 <a href="#">Đăng xuất</a>
             </div>
         </div>
+    </div> -->
+
+    <div class="top-nav-bar">
+        <div class="container container-top-nav-bar">
+            <a href="http://localhost:3000" style="text-decoration: none"><img src="image/icon.png" alt=""
+                    class="logo"><span class="logoContent">Dima</span></a>
+            <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
+                <div class="search-box">
+                    <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false"
+                        class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- dropdown menu -->
+            <div class="dropdown">
+                <button class="dropbtn"><span class="dropbtn-content" style="color: #ffffff">ĐĂNG NHẬP </span><i
+                        class="fa fa-caret-down" aria-hidden="true"></i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/login">Đăng nhập</a>
+                    <a href="/signup">Đăng ký</a>
+                    <a href="/upload">Đăng sách</a>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <h2 style="color: #00cc00; text-align: center; margin-top: 30px">Danh sách sản phẩm</h2>
 
     <section class="mySection">
         <div>
@@ -70,9 +106,9 @@
                         <td><%= product.tag%></td>
                         <td>
                             <a class="editbtn manipulation" id="edit-icon"><i class="fa fa-pencil-square-o"
-                                    aria-hidden="true" title="Sửa thông tin"></i></a>
+                                    aria-hidden="true" title="Sửa thông tin" style="color: blueviolet"></i></a>
                             <a class="deletebtn manipulation" id="delete-icon"><i class="fa fa-trash-o"
-                                    aria-hidden="true" title="Xóa sản phẩm"></i></a>
+                                    aria-hidden="true" title="Xóa sản phẩm" style="color: red"></i></a>
                         </td>
                     </tr>
                     <% }); %>
@@ -110,7 +146,7 @@
                 oninput="setCustomValidity('')" onkeyup="return displayWordCounter();"
                 onkeypress="return isNumberKey(event)">
 
-            <label for="imageUpload" class="btn btn-primary btn-block chooseFile" id="Label1" name="aaaaa" style="overflow: hidden">Nhấp vào đây để chọn
+            <label for="imageUpload" class="btn btn-block chooseFile" id="Label1" name="aaaaa" style="overflow: hidden">Nhấp vào đây để chọn
                 ảnh</label>
             <input type="file" accept="image/*" name="photo" required="" id="imageUpload" style="display: none"
                 oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
@@ -122,7 +158,7 @@
                 <option value="Khác">Khác</option>
             </select>
             
-            <button id="upload" type="submit" class="btn">Đăng</button>
+            <button id="upload" type="submit" class="btn" style="background-color: #00cc00">Đăng</button>
         </form>
     </div>
 
@@ -187,7 +223,7 @@
     </div>
 
     <section class="footer">
-        Phiên bản 1.0.0 - Được phát triển bởi VNT_team - 2019
+        <p class=""><small class="text-black-50">© 2019. Phiên bản 1.0.0. Được phát triển bởi PLANT</small></p>
     </section>
 </body>
 
