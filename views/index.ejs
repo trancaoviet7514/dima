@@ -1,5 +1,3 @@
-<% var weather; %>
-<% var error; %>
 <!DOCTYPE html>
 <html lang="en">
 <%var products %>
@@ -17,20 +15,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script|Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/main.css">
 </head>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="typeahead.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('input.typeahead').typeahead({
-            name: 'typeahead',
-            remote: 'http://localhost:3000/search?key=%QUERY',
-            limit: 10
-        });
-    });
-</script>
 
 <body>
         <button onclick="getLocation()">ZALO Test geolocation permission</button>
@@ -84,114 +78,90 @@
     </div>
     
     <div class="top-nav-bar">
-        <a href=""><img src="image/icon2.png" alt="" class="logo"></a>
-        <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
-            <div class="search-box">
-                <!-- <i class="fa fa-bars" id="menu-btn" onclick="openmenu()" aria-hidden="true"></i>
-                <i class="fa fa-times" id="close-btn" onclick="closemenu()" aria-hidden="true"></i> -->
-                <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false"
-                    class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
-                <button type="submit" class="searchButton">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-            </div>
-        </form>
+        <div class="container">
+            <a href="http://localhost:3000" style="text-decoration: none"><img src="image/icon.png" alt=""
+                    class="logo"><span class="logoContent">Dima</span></a>
+            <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
+                <div class="search-box">
+                    <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false"
+                        class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
 
-        <div class="menu-bar">
+            <div class="menu-bar">
+                <ul>
+                    <li><a href="/login">Đăng nhập</a></li>
+                    <li><a href="/signup">Đăng ký</a></li>
+                    <li><a href="/personalPage">Đăng sách</a></li>
+                </ul>
+            </div>
+
+            <!-- dropdown menu -->
+            <div class="dropdown">
+                <button class="dropbtn"><span class="dropbtn-content" style="color: #ffffff">ĐĂNG NHẬP </span><i
+                        class="fa fa-caret-down" aria-hidden="true"></i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/login">Đăng nhập</a>
+                    <a href="/signup">Đăng ký</a>
+                    <a href="/personalPage">Đăng sách</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container filter" style="padding: 0">
+        <div class="filter-bar ">
             <ul>
-                <!-- <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                    Cart</a></li>  -->
-                <li><a href="/login">Đăng nhập</a></li>
-                <li><a href="/signup">Đăng ký</a></li>
-                <li><a href="/upload">Đăng sách</a></li>
+                <li><a href="/tag/news"><img src="image/new-product.png">Mới</a></li>
+                <li><a href="/tag/books"><img src="image/book.png">Sách</a></li>
+                <li><a href="/tag/belongings"><img src="image/bike.png">Đồ dùng</a></li>
+                <li><a href="/tag/clothes"><img src="image/tshirt.png">Quần áo</a></li>
+                <li><a href="/tag/others"><img src="image/questionmark.png">Khác</a></li>
             </ul>
         </div>
     </div>
 
-    <div class="filter-bar">
-        <ul>
-            <li><a href="/tag/news">Mới</a></li>
-            <li><a href="/tag/books">Sách</a></li>
-            <li><a href="/tag/belongings">Đồ dùng</a></li>
-            <li><a href="/tag/clothes">Quần áo</a></li>
-            <li><a href="/tag/others">Khác</a></li>
-        </ul>
-    </div>
-
-    <section class="header">
-        <!-- <div class="side-menu" id="side-menu">
-            <ul>
-                <li>Sản phẩm mới<i class="fa fa-angle-right" aria-hidden="true"></i>
-                    <ul class="childMenu">
-                                    <li>Sub Menu-1</li>
-                                    <li>Sub Menu-1</li>
-                                    <li>Sub Menu-1</li>
-                                    <li>Sub Menu-1</li>
-                                </ul>
-                </li>
-                <li>Sách cũ<i class="fa fa-angle-right" aria-hidden="true"></i>
-                </li>
-                <li>Quần áo<i class="fa fa-angle-right" aria-hidden="true"></i>
-                </li>
-                <li>Đồ gia dụng<i class="fa fa-angle-right" aria-hidden="true"></i>
-                </li>
-                <li>Khác ...<i class="fa fa-angle-right" aria-hidden="true"></i>
-                </li>
-            </ul>
-        </div> -->
-        <!-- <div class="slider">
-                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="image/a.png" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="image/b.jpg" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="image/c.jpg" class="d-block w-100" alt="...">
-                                </div>
-                            </div>
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleFade" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleFade" data-slide-to="2"></li>
-                            </ol>
-                            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div> -->
+    <section class="header container" style="margin-bottom: 20px;">
+        <div class="slider">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="image/bvmt1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/bvmt2.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/bvmt3.jpg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleFade" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleFade" data-slide-to="2"></li>
+                </ol>
+                <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
     </section>
 
-    <!-- featured-categories -->
-    <!-- <section class="featured-categories">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="image/1.jpg" alt="">
-                            </div>
-                            <div class="col-md-4">
-                                <img src="image/2.jpg" alt="">
-                            </div>
-                            <div class="col-md-4">
-                                <img src="image/3.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </section> -->
+    <div class="container">
+        <h4 style="color: #00cc00;">Sản phẩm</h4>
+    </div>
 
     <!-- on sale product -->
     <section class="on-sale">
         <div class="container sachmoi">
-            <!-- <div class="title-box firsttitle">
-                <h2>Sách mới</h2>
-            </div> -->
             <div class="row" id="listProduct">
                 <% if(products != null) { %>
 
@@ -201,36 +171,17 @@
                 <%}%>
 
                 <% products.forEach(function(product) { %>
-                <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="col-sm-6 col-md-4 col-lg-3 nopPadding">
                     <div class="box">
-                        <a href="/product/<%= product.id%>">
+                        <a href="/product/<%= product.id%>" style="text-decoration: none">
                             <div class="product-top">
                                 <%var str = `${product.image}` %>
                                 <img src="<%= str%>" alt="" class="img-responsive">
-    
-                                <!-- nút bấm bên phải hình -->
-    
-                                <!-- <div class="overlay-right">
-                                                        <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary" title="Add to Wishlist">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div> -->
                             </div>
                             <div class="product-bottom">
-                                <!-- <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star-half-o" aria-hidden="true"></i> -->
                                 <h3><%= product.name%></h3>
-                                <h5 class="x">Giá: <%= product.price%> VNĐ</h5>
-                                <h5 class="y">Liên hệ: <%= product.phone%></h5>
+                                <h5 class="x" style="color: black"><%= product.price%> ₫</h5>
+                                <h5 class="y"><%= product.phone%></h5>
                             </div>
                         </a>
                     </div>
@@ -241,59 +192,7 @@
         </div>
     </section>
 
-    <!-- Website features
-                <section class="website-features">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3 feature-box">
-                                <img src="image/1a.png" alt="">
-                                <div class="feature-text">
-                                    <p><b>100% Original items</b> are available at company.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 feature-box">
-                                <img src="image/1b.png" alt="">
-                                <div class="feature-text">
-                                    <p><b>Return within 30 days</b> of recieving your order.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 feature-box">
-                                <img src="image/1c.png" alt="">
-                                <div class="feature-text">
-                                    <p><b>Get free delivery for every</b> are available at company</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 feature-box">
-                                <img src="image/1d.png" alt="">
-                                <div class="feature-text">
-                                    <p><b>100% Original items</b> are available at company</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section> -->
-
-    <!-- footer  -->
-    <!-- <section class="footer">
-        <div class="container text-center text-md-left">
-            <div class="row">
-                <div class="col-md-3">
-                    <h3>Useful Links</h3>
-                    <p>Useful Links</p>
-                    <p>Useful Links</p>
-                    <p>Useful Links</p>
-                </div>
-                <div class="col-md-3">
-                    <h3>Useful Links</h3>
-                    <p>Useful Links</p>
-                    <p>Useful Links</p>
-                    <p>Useful Links</p>
-                </div>
-            </div>
-            <hr>
-        </div>
-        Phiên bản 1.0.0 - Được phát triển bởi 70x team - 2019
-    </section> -->
+    <!-- footer -->
     <div class="footer">
         <div class="container">
           <div class="row">
@@ -318,58 +217,15 @@
           </div>
           <div class="row mt-5">
             <div class="col copyright">
-              <p class=""><small class="text-black-50">© 2019. Phiên bản 1.0.0. Được phát triển bởi ___team.</small></p>
+              <p class=""><small class="text-black-50">© 2019. Phiên bản 1.0.0. Được phát triển bởi PLANT</small></p>
             </div>
           </div>
         </div>
         </div>
     <!-- Footer -->
-    <!-- Nút menu -->
-    <!-- <script>
-        function openmenu() {
-            document.getElementById("side-menu").style.display = "block";
-            document.getElementById("menu-btn").style.display = "none";
-            document.getElementById("close-btn").style.display = "block";
-        }
-        function closemenu() {
-            document.getElementById("side-menu").style.display = "none";
-            document.getElementById("menu-btn").style.display = "block";
-            document.getElementById("close-btn").style.display = "none";
-        }
-    </script> -->
 </body>
 
-<script>
-    // var createCallBack = function () { //First function
-    //     // var y = document.getElementById("x").textContent;
-    //     // console.log(y);
-    //     // var array = document.querySelectorAll("h5");
-    //     var array = document.getElementsByClassName("x");
-    //     for (var i = 0; i < array.length; i++) {
-    //         array[i].innerHTML = formatCurrency(array[i].textContent);
-    //     }
-    // }
-
-    // function formatCurrency(num) {
-    //     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-    // }
-
-    // var createCallBack2 = function () { //First function
-    //     // var y = document.getElementById("x").textContent;
-    //     // console.log(y);
-    //     // var array = document.querySelectorAll("h5");
-    //     var array = document.getElementsByClassName("y");
-    //     for (var i = 0; i < array.length; i++) {
-    //         array[i].innerHTML = formatPhoneNumber(array[i].textContent);
-    //     }
-    // }
-
-    // function formatPhoneNumber(num) {
-    //     text = num.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
-    //     return text;
-    // }
-
-    // window.onload = function () { createCallBack(); createCallBack2()}; // caller 7
-</script>
+<!-- javascript -->
+<script type="text/javascript" src="JS/index.js"></script>
 
 </html>

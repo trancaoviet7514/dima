@@ -39,7 +39,7 @@
     position: absolute;
     right: 1px;
     top: -2px;
-    color: #000;
+    color: #000000;
     font-size: 20px;
     font-weight: bold;
   }
@@ -48,6 +48,7 @@
   .close:focus {
     color: red;
     cursor: pointer;
+    opacity: 1;
   }
   
   /* Change styles for span and cancel button on extra small screens */
@@ -106,6 +107,7 @@
 
     .btn:hover {
         opacity: 1;
+        color: #000000;
     }
 
     p {
