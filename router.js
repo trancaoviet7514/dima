@@ -39,14 +39,14 @@ router.get("/", function(req, res) {
 
 router.get("/upload", function(req, res) {
   res.render("upload");
+});
 
-  router.get("/login", function(req, res) {
-    res.render("login");
-  });
+router.get("/login", function(req, res) {
+  res.render("login");
+});
 
-  router.get("/signup", function(req, res) {
-    res.render("signup");
-  });
+router.get("/signup", function(req, res) {
+  res.render("signup");
 });
 
 router.get("/product", function(req, res) {
