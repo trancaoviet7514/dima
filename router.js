@@ -85,12 +85,17 @@ router.post("/upload", upload.single("photo"), (req, res) => {
                   \'${req.body.phone}\',
                   \'${req.body.tag}')`
       client.query(insertStr, function(err, results) {
-        if (err) throw err;
-        console.log("Insert a record!");
+        if (err) {
+          res.redirect('/personalPage?fail');
+          throw err;
+        }  
+          console.log("Insert a record!");
       });
       if (req.file) {
-        res.redirect("/");
-      } else throw "error";
+        res.redirect('/personalPage?done');
+      } else{
+        res.redirect('/personalPage?fail');
+      } 
     }
   );
 });

@@ -28,7 +28,19 @@
     <link rel="stylesheet" href="css/editDialog.css">
     <link rel="stylesheet" href="css/deleteDialog.css">
 </head>
-
+<script>
+    window.onload = function () {
+        var notify = location.search.toString().split('?')[1]
+        if(notify == 'done'){
+            alert("Đăng sách thành công!");
+            window.location.href = "personalPage";
+        }
+        else if(notify == 'fail'){
+            alert("Đăng sách thất bại!");
+            window.location.href = "personalPage";
+        }
+    };
+</script>
 <body>
     <!-- <div class="top-nav-bar">
         <div class="search-box">
