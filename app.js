@@ -14,5 +14,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router, productrouter, userrouter)
 
 app.listen(process.env.PORT || 3000, function () {
-  console.log('Example app listening on port 3000!')
+  console.log('Dima server listening on port 3000!')
 })
