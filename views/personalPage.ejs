@@ -2,47 +2,47 @@
 <html lang="en">
 <%var products %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Vibes&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Bad+Script|Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Caveat|Sacramento&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Vibes&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Bad+Script|Pacifico&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Caveat|Sacramento&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/personalPage.css">
-    <link rel="stylesheet" href="css/dialogUpload.css">
-    <link rel="stylesheet" href="css/editDialog.css">
-    <link rel="stylesheet" href="css/deleteDialog.css">
-</head>
-<script>
-    window.onload = function () {
-        var notify = location.search.toString().split('?')[1]
-        if(notify == 'done'){
-            alert("Đăng sách thành công!");
-            window.location.href = "personalPage";
-        }
-        else if(notify == 'fail'){
-            alert("Đăng sách thất bại!");
-            window.location.href = "personalPage";
-        }
-    };
-</script>
-<body>
-    <!-- <div class="top-nav-bar">
+        <link rel="stylesheet" href="css/personalPage.css">
+        <link rel="stylesheet" href="css/dialogUpload.css">
+        <link rel="stylesheet" href="css/editDialog.css">
+        <link rel="stylesheet" href="css/deleteDialog.css">
+    </head>
+    <script>
+        window.onload = function() {
+            var notify = location.search.toString().split('?')[1]
+            if (notify == 'done') {
+                alert("Đăng sách thành công!");
+                window.location.href = "personalPage";
+            } else if (notify == 'fail') {
+                alert("Đăng sách thất bại!");
+                window.location.href = "personalPage";
+            }
+        };
+    </script>
+
+    <body>
+        <!-- <div class="top-nav-bar">
         <div class="search-box">
             <a href="/"><img src="image/icon2.png" alt="" class="logo"></a>
             <input type="text" class="form-control">
@@ -59,187 +59,188 @@
         </div>
     </div> -->
 
-    <div class="top-nav-bar">
-        <div class="container container-top-nav-bar">
-            <a href="http://localhost:3000" style="text-decoration: none"><img src="image/icon.png" alt=""
-                    class="logo"><span class="logoContent">Dima</span></a>
-            <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
-                <div class="search-box">
-                    <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false"
-                        class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
-                    <button type="submit" class="searchButton">
+        <div class="top-nav-bar">
+            <div class="container container-top-nav-bar">
+                <a href="http://localhost:3000" style="text-decoration: none"><img src="image/icon.png" alt="" class="logo"><span class="logoContent">Dima</span></a>
+                <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
+                    <div class="search-box">
+                        <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false" class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
+                        <button type="submit" class="searchButton">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
-                </div>
-            </form>
+                    </div>
+                </form>
 
-            <!-- dropdown menu -->
-            <div class="dropdown">
-                <button class="dropbtn"><span class="dropbtn-content" style="color: #ffffff">ĐĂNG NHẬP </span><i
+                <!-- dropdown menu -->
+                <div class="dropdown">
+                    <button class="dropbtn"><span class="dropbtn-content" style="color: #ffffff">ĐĂNG NHẬP </span><i
                         class="fa fa-caret-down" aria-hidden="true"></i></button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="/login">Đăng nhập</a>
-                    <a href="/signup">Đăng ký</a>
-                    <a href="/upload">Đăng sách</a>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="/login">Đăng nhập</a>
+                        <a href="/signup">Đăng ký</a>
+                        <a href="/upload">Đăng sách</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+        <h3>Welcome
+            <%= user.username %>
+        </h3>
+        <strong>id
+        <%= user.uid %>
+        </strong>
+        <strong>username
+        <%= user.username %>
+        </strong>
+        </br>
 
-    <h2 style="color: #00cc00; text-align: center; margin-top: 30px">Danh sách sản phẩm</h2>
+        <h2 style="color: #00cc00; text-align: center; margin-top: 30px">Danh sách sản phẩm</h2>
 
-    <section class="mySection">
-        <div>
-            <table>
-                <thead>
-                    <tr class="first">
-                        <th>stt</th>
-                        <th style="display: none">#</th>
-                        <th>Tên</th>
-                        <th>Giá</th>
-                        <th>Số điện thoại</th>
-                        <th>Ảnh</th>
-                        <th>Tag</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if(products != null) { %>
-                    <% products.forEach(function(product) { %>
-                    <tr>
-                        <td class="firstColumn" id="id">erere</td>
-                        <td style="display: none"><%= product.id%></td>
-                        <td><%= product.name%></td>
-                        <td><%= product.price%></td>
-                        <td><%= product.phone%></td>
-                        <%var str = `${product.image}` %>
-                        <td><img class="image" src="<%= str%>" alt="" title="Sửa ảnh"
-                                onclick="document.getElementById('id04').style.display='block'"></td>
-                        <td><%= product.tag%></td>
-                        <td>
-                            <a class="editbtn manipulation" id="edit-icon"><i class="fa fa-pencil-square-o"
+        <section class="mySection">
+            <div>
+                <table>
+                    <thead>
+                        <tr class="first">
+                            <th>stt</th>
+                            <th style="display: none">#</th>
+                            <th>Tên</th>
+                            <th>Giá</th>
+                            <th>Số điện thoại</th>
+                            <th>Ảnh</th>
+                            <th>Tag</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(products != null) { %>
+                            <% products.forEach(function(product) { %>
+                                <tr>
+                                    <td class="firstColumn" id="id">erere</td>
+                                    <td style="display: none">
+                                        <%= product.id%>
+                                    </td>
+                                    <td>
+                                        <%= product.name%>
+                                    </td>
+                                    <td>
+                                        <%= product.price%>
+                                    </td>
+                                    <td>
+                                        <%= product.phone%>
+                                    </td>
+                                    <%var str = `${product.image}` %>
+                                        <td><img class="image" src="<%= str%>" alt="" title="Sửa ảnh" onclick="document.getElementById('id04').style.display='block'"></td>
+                                        <td>
+                                            <%= product.tag%>
+                                        </td>
+                                        <td>
+                                            <a class="editbtn manipulation" id="edit-icon"><i class="fa fa-pencil-square-o"
                                     aria-hidden="true" title="Sửa thông tin" style="color: blueviolet"></i></a>
-                            <a class="deletebtn manipulation" id="delete-icon"><i class="fa fa-trash-o"
+                                            <a class="deletebtn manipulation" id="delete-icon"><i class="fa fa-trash-o"
                                     aria-hidden="true" title="Xóa sản phẩm" style="color: red"></i></a>
-                        </td>
-                    </tr>
-                    <% }); %>
-                    <%}%>
-                    <tr>
-                        <td></td>
-                        <td style="display: none"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="add manipulation" onclick="document.getElementById('id01').style.display='block'">Thêm SP</td>
-                    </tr>
-            </tbody>
-        </table>
-        </div>
+                                        </td>
+                                </tr>
+                                <% }); %>
+                                    <%}%>
+                                        <tr>
+                                            <td></td>
+                                            <td style="display: none"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="add manipulation" onclick="document.getElementById('id01').style.display='block'">Thêm SP</td>
+                                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
-    </div>
-    <!-- upload dialog  -->
-    <div id="id01" class="modal">
-        <form class="modal-content animate container" action="/upload" method="post" enctype="multipart/form-data">
-            <h1>Đăng sản phẩm<span onclick="document.getElementById('id01').style.display='none'" class="close"
-                    title="Đóng cửa sổ">&times;</span></h1>
+        </div>
+        <!-- upload dialog  -->
+        <div id="id01" class="modal">
+            <form class="modal-content animate container" action="/upload" method="post" enctype="multipart/form-data">
+                <h1>Đăng sản phẩm<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Đóng cửa sổ">&times;</span></h1>
 
-            <input type="text" placeholder="Nhập tên sản phẩm" id="nameId" name="name" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập tên sản phẩm')" oninput="setCustomValidity('')">
+                <input type="text" placeholder="Nhập tên sản phẩm" id="nameId" name="name" required="" oninvalid="this.setCustomValidity('Vui lòng nhập tên sản phẩm')" oninput="setCustomValidity('')">
 
-            <input type="text" placeholder="Nhập giá sản phẩm" name="price" id="priceId" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập giá sản phẩm')" oninput="setCustomValidity('')"
-                onkeypress="return isNumberKey(event)">
+                <input type="text" placeholder="Nhập giá sản phẩm" name="price" id="priceId" required="" oninvalid="this.setCustomValidity('Vui lòng nhập giá sản phẩm')" oninput="setCustomValidity('')" onkeypress="return isNumberKey(event)">
 
-            <input type="text" placeholder="Nhập số điện thoại" name="phone" id="phonenumberId" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại liên hệ')"
-                oninput="setCustomValidity('')" onkeyup="return displayWordCounter();"
-                onkeypress="return isNumberKey(event)">
+                <input type="text" placeholder="Nhập số điện thoại" name="phone" id="phonenumberId" required="" oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại liên hệ')" oninput="setCustomValidity('')" onkeyup="return displayWordCounter();" onkeypress="return isNumberKey(event)">
 
-            <label for="imageUpload" class="btn btn-block chooseFile" id="Label1" name="aaaaa" style="overflow: hidden">Nhấp vào đây để chọn
+                <label for="imageUpload" class="btn btn-block chooseFile" id="Label1" name="aaaaa" style="overflow: hidden">Nhấp vào đây để chọn
                 ảnh</label>
-            <input type="file" accept="image/*" name="photo" required="" id="imageUpload" style="display: none"
-                oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
+                <input type="file" accept="image/*" name="photo" required="" id="imageUpload" style="display: none" oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
 
-            <select name="tag" id="tag" class="select">
-                <option value="Sách">Sách</option>
-                <option value="Đồ dùng">Đồ dùng</option>
-                <option value="Quần áo">Quần áo</option>
-                <option value="Khác">Khác</option>
-            </select>
-            
-            <button id="upload" type="submit" class="btn" style="background-color: #00cc00">Đăng</button>
-        </form>
-    </div>
-
-    <!-- editDialog -->
-    <div id="id02" class="modal">
-        <form class="modal-content animate container" action="/edit" method="post" enctype="multipart/form-data">
-            <h1>Chỉnh sửa<span onclick="document.getElementById('id02').style.display='none'" class="close"
-                    title="Đóng cửa sổ">&times;</span></h1>
-
-            <input type="text" placeholder="Nhập tên sản phẩm" class="edit_name" id="edit_name_id" name="edit_name" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập tên sản phẩm')" oninput="setCustomValidity('')">
-
-            <input type="text" placeholder="Nhập giá sản phẩm" class="edit_price" name="edit_price" id="edit_price_id" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập giá sản phẩm')" oninput="setCustomValidity('')"
-                onkeypress="return isNumberKey(event)">
-
-            <input type="text" placeholder="Nhập số điện thoại" class="edit_phone" name="edit_phone" id="edit_phone_id" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại liên hệ')"
-                oninput="setCustomValidity('')" onkeyup="return displayWordCounter();"
-                onkeypress="return isNumberKey(event)">
-
-            <input type="text" name="edit_id" class="edit_id" style="display: none">
-
-            <select name="edit_tag" id="edit_tag" class="select">
+                <select name="tag" id="tag" class="select">
                 <option value="Sách">Sách</option>
                 <option value="Đồ dùng">Đồ dùng</option>
                 <option value="Quần áo">Quần áo</option>
                 <option value="Khác">Khác</option>
             </select>
 
-            <button id="edit" type="submit" class="btn">Hoàn tất</button>
-        </form>
-    </div>
+                <button id="upload" type="submit" class="btn" style="background-color: #00cc00">Đăng</button>
+            </form>
+        </div>
 
-    <!-- edit image dialog -->
-    <div id="id04" class="modal">
-        <form class="modal-content animate container" action="/editImage" method="post" enctype="multipart/form-data">
-            <h1>Sửa hình ảnh<span onclick="document.getElementById('id04').style.display='none'" class="close"
-                    title="Đóng cửa sổ">&times;</span></h1>
+        <!-- editDialog -->
+        <div id="id02" class="modal">
+            <form class="modal-content animate container" action="/edit" method="post" enctype="multipart/form-data">
+                <h1>Chỉnh sửa<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Đóng cửa sổ">&times;</span></h1>
 
-            <label for="edit_file_id" class="btn btn-primary btn-block chooseFile edit_file" name="edit_file" id="Label3" style="overflow: hidden">Nhấp vào đây để chọn
+                <input type="text" placeholder="Nhập tên sản phẩm" class="edit_name" id="edit_name_id" name="edit_name" required="" oninvalid="this.setCustomValidity('Vui lòng nhập tên sản phẩm')" oninput="setCustomValidity('')">
+
+                <input type="text" placeholder="Nhập giá sản phẩm" class="edit_price" name="edit_price" id="edit_price_id" required="" oninvalid="this.setCustomValidity('Vui lòng nhập giá sản phẩm')" oninput="setCustomValidity('')" onkeypress="return isNumberKey(event)">
+
+                <input type="text" placeholder="Nhập số điện thoại" class="edit_phone" name="edit_phone" id="edit_phone_id" required="" oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại liên hệ')" oninput="setCustomValidity('')" onkeyup="return displayWordCounter();"
+                    onkeypress="return isNumberKey(event)">
+
+                <input type="text" name="edit_id" class="edit_id" style="display: none">
+
+                <select name="edit_tag" id="edit_tag" class="select">
+                <option value="Sách">Sách</option>
+                <option value="Đồ dùng">Đồ dùng</option>
+                <option value="Quần áo">Quần áo</option>
+                <option value="Khác">Khác</option>
+            </select>
+
+                <button id="edit" type="submit" class="btn">Hoàn tất</button>
+            </form>
+        </div>
+
+        <!-- edit image dialog -->
+        <div id="id04" class="modal">
+            <form class="modal-content animate container" action="/editImage" method="post" enctype="multipart/form-data">
+                <h1>Sửa hình ảnh<span onclick="document.getElementById('id04').style.display='none'" class="close" title="Đóng cửa sổ">&times;</span></h1>
+
+                <label for="edit_file_id" class="btn btn-primary btn-block chooseFile edit_file" name="edit_file" id="Label3" style="overflow: hidden">Nhấp vào đây để chọn
                 ảnh</label>
 
-            <input type="file" accept="image/*" name="edit_photo" class="edit_photo" required="" id="edit_file_id" style="display: none"
-                oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
+                <input type="file" accept="image/*" name="edit_photo" class="edit_photo" required="" id="edit_file_id" style="display: none" oninvalid="this.setCustomValidity('Vui lòng chọn hình ảnh')" oninput="setCustomValidity('')">
 
-            <input type="text" name="image_id" class="image_id" style="display: none">
+                <input type="text" name="image_id" class="image_id" style="display: none">
 
-            <button id="edit_image" type="submit" class="btn">Hoàn tất</button>
-        </form>
-    </div>
+                <button id="edit_image" type="submit" class="btn">Hoàn tất</button>
+            </form>
+        </div>
 
-    <!-- deleteRow Dialog -->
-    <div id="id03" class="delete">
-        <form class="deleteDialog container" action="/delete" method="post">
-            <h5>Bạn có chắc muốn xóa sản phẩm<span onclick="document.getElementById('id03').style.display='none'"
-                    class="close" title="Đóng cửa sổ">&times;</span></h5>
-            <h4 id="name_product_id" class="name_product" style="font-weight: bold"></h4>
-            <input type="text" name="delete_id" id="delete_id" style="display: none">
-            <button id="delete" type="submit" class="btn">Xóa</button>
-        </form>
-    </div>
+        <!-- deleteRow Dialog -->
+        <div id="id03" class="delete">
+            <form class="deleteDialog container" action="/delete" method="post">
+                <h5>Bạn có chắc muốn xóa sản phẩm<span onclick="document.getElementById('id03').style.display='none'" class="close" title="Đóng cửa sổ">&times;</span></h5>
+                <h4 id="name_product_id" class="name_product" style="font-weight: bold"></h4>
+                <input type="text" name="delete_id" id="delete_id" style="display: none">
+                <button id="delete" type="submit" class="btn">Xóa</button>
+            </form>
+        </div>
 
-    <section class="footer">
-        <p class=""><small class="text-black-50">© 2019. Phiên bản 1.0.0. Được phát triển bởi PLANT</small></p>
-    </section>
-</body>
+        <section class="footer">
+            <p class=""><small class="text-black-50">© 2019. Phiên bản 1.0.0. Được phát triển bởi PLANT</small></p>
+        </section>
+    </body>
 
-<!-- javascript -->
-<script  type="text/javascript" src="JS/personalPage.js"></script>
+    <!-- javascript -->
+    <script type="text/javascript" src="JS/personalPage.js"></script>
 
 </html>
