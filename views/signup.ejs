@@ -2,6 +2,8 @@
 <html>
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/ratchet/2.0.2/css/ratchet.css" rel="stylesheet" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,31 +14,33 @@
 <body>
     <div class="bg-img">
         <form action="/signup" class="container" method="post">
-            <h1>Tạo tài khoản mới</h1>
+            <% if(message.length > 0) { %>
+                <div class="alert alert-danger">
+                    <%= message %>
+                </div>
+                <% } %>
+                    <h1>Tạo tài khoản mới</h1>
 
-            <input type="text" placeholder="Tên đăng nhập" name="username" required=""
-                oninvalid="this.setCustomValidity('Vui lòng nhập tên đăng nhập')" oninput="setCustomValidity('')">
+                    <input type="text" placeholder="Tên đăng nhập" name="username" required="" oninvalid="this.setCustomValidity('Vui lòng nhập tên đăng nhập')" oninput="setCustomValidity('')">
 
-            <input type="password" placeholder="Mật khẩu" name="password"  required=""
-            oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="setCustomValidity('')">
+                    <input type="password" placeholder="Mật khẩu" name="password" required="" oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="setCustomValidity('')">
 
-            <input type="password" placeholder="Nhập lại mật khẩu" name="rePassword"  required=""
-            oninvalid="this.setCustomValidity('Vui lòng nhập lại mật khẩu')" oninput="setCustomValidity('')">
+                    <input type="password" placeholder="Nhập lại mật khẩu" name="rePassword" required="" oninvalid="this.setCustomValidity('Vui lòng nhập lại mật khẩu')" oninput="setCustomValidity('')">
 
-            <button type="submit" class="btn">Đăng ký</button>
+                    <button type="submit" class="btn">Đăng ký</button>
 
-            <a href="/login">
-                <p>Đăng nhập</p>
-            </a>
+                    <a href="/login">
+                        <p>Đăng nhập</p>
+                    </a>
 
-            <a href="/">
-                <p>Quay lại trang chủ</p>
-            </a>
+                    <a href="/">
+                        <p>Quay lại trang chủ</p>
+                    </a>
         </form>
     </div>
 </body>
 
 <!-- javascript -->
-<script  type="text/javascript" src="JS/signUp.js"></script>
+<script type="text/javascript" src="JS/signUp.js"></script>
 
 </html>
