@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script|Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../public/css/main.css">
+</head>
+
+<body>
+        
+    <div class="zalo-chat-widget" data-oaid="1832450568844210993" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="5" data-width="350" data-height="420"></div>
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v4.0'
+        });
+      };
+
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your customer chat code -->
+    <div class="fb-customerchat"
+      attribution=setup_tool
+      page_id="107953353942814"
+      theme_color="#13cf13"
+      logged_in_greeting="Bạn cần giúp gì nè!"
+      logged_out_greeting="Bạn cần giúp gì nè!">
+    </div>
+    
+    <div class="top-nav-bar">
+        <div class="container">
+            <a href="http://localhost:3000" style="text-decoration: none"><img src="image/icon.png" alt=""
+                    class="logo"><span class="logoContent">Dima</span></a>
+            <form action="/find" class="form-search-box" method="get" enctype="multipart/form-data">
+                <div class="search-box">
+                    <input type="text" name="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false"
+                        class="form-control" placeholder="Nhập tên sản phẩm muốn tìm">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div class="menu-bar">
+                <ul>
+                    <li><a href="/login">Đăng nhập</a></li>
+                    <li><a href="/signup">Đăng ký</a></li>
+                    <li><a href="/personalPage">Đăng sách</a></li>
+                </ul>
+            </div>
+
+            <!-- dropdown menu -->
+            <div class="dropdown">
+                <button class="dropbtn"><span class="dropbtn-content" style="color: #ffffff">ĐĂNG NHẬP </span><i
+                        class="fa fa-caret-down" aria-hidden="true"></i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/login">Đăng nhập</a>
+                    <a href="/signup">Đăng ký</a>
+                    <a href="/personalPage">Đăng sách</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .err img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <div class="container err">
+        <img src="../public/image/not-found(2).png" alt="OOPS! Page not found">
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-xs-12 about-company">
+              <h4>Giới thiệu</h4>
+              <p class="pr-5 text-black-50">Tổ chức của chúng tôi là một tổ chức phi lợi nhuận. Mục đích của sản phẩm là dùng để chia sẻ những vật dụng không còn nhu cầu sử dụng, ví dụ như sách vở.</p>
+            </div>
+            <div class="col-lg-3 col-xs-12 links">
+              <h4 class="mt-lg-0 mt-sm-3">Tham khảo</h4>
+                <ul class="m-0 p-0">
+                  <li>- <a href="#">Chính sách bảo mật</a></li>
+                  <li>- <a href="#">Tuyển dụng</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-xs-12 location">
+              <h4 class="mt-lg-0 mt-sm-4">Liên hệ</h4>
+              <p><i class="fa fa-map-marker" aria-hidden="true"></i>135B Trần Hưng Đạo, Cầu Ông Lãnh, Quận 1, TP Hồ Chí Minh</p>
+              <p><img class="zalo-icon" src="image/zaloicon.png" alt=""> 0934 773 909</p>
+              <p><i class="fa fa-envelope-o mr-3"></i>trancaoviet7514@gmail.com</p>
+              <a href="https://www.facebook.com/trancaoviet"><i class="fa fa-facebook-square"></i>https://www.facebook.com/trancaoviet</a>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col copyright">
+              <p class=""><small class="text-black-50">© 2019. Phiên bản 1.0.0. Được phát triển bởi PLANT</small></p>
+            </div>
+          </div>
+        </div>
+        </div>
+    <!-- Footer -->
+</body>
+
+<!-- javascript -->
+<script type="text/javascript" src="JS/index.js"></script>
+
+</html>
